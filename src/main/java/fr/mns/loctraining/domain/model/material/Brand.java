@@ -1,13 +1,14 @@
 package fr.mns.loctraining.domain.model.material;
 
 import fr.mns.loctraining.domain.model.common.BaseEntity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.Entity;
+import lombok.Getter;
+import lombok.Setter;
 
-public class Brand extends Model {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+@Entity
+@Getter
+@Setter
+public class Brand extends BaseEntity {
+
     private String nameBrand;
 }

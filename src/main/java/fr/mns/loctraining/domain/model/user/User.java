@@ -15,10 +15,6 @@ import java.io.File;
 @Setter
 public class User extends BaseEntity {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
-
     private String lastName;
     private String firstName;
     private String email;

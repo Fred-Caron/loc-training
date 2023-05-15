@@ -1,4 +1,7 @@
 package fr.mns.loctraining.domain.repository.material;
 
-public interface BrandRepository extends ModelRepository{
+import fr.mns.loctraining.domain.model.material.Brand;
+import fr.mns.loctraining.domain.repository.common.BaseRepository;
+
+public interface BrandRepository extends BaseRepository<Brand> {
 }
