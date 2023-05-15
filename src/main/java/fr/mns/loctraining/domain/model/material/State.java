@@ -12,5 +12,5 @@ import lombok.Setter;
 public class State extends BaseEntity {
 
 
-    private String nameState;
+    private String name;
 }

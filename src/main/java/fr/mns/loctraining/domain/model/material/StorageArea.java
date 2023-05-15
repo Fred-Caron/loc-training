@@ -10,5 +10,5 @@ import lombok.Setter;
 @Setter
 
 public class StorageArea extends BaseEntity {
-    private String nameStorageArea;
+    private String name;
 }

@@ -14,10 +14,10 @@ import java.util.Date;
 @Getter
 @Setter
 public class Location extends BaseEntity {
-    private Date askingDateLocation;
-    private String reasonLocation;
-    private Date previsionnalStartingDateLocation;
-    private Date previsionnalEndDateLocation;
+    private Date askingDate;
+    private String reason;
+    private Date previsionnalStartingDate;
+    private Date previsionnalEndDate;
     private Date extentionDate;
     private Date extendionDateValidation;
     private Date extensionDuration;

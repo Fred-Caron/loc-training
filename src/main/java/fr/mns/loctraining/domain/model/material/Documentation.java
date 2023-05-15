@@ -11,5 +11,5 @@ import lombok.Setter;
 
 public class Documentation extends BaseEntity {
 
-    private String descriptionDocumentation;
+    private String description;
 }

@@ -11,5 +11,5 @@ import lombok.Setter;
 
 public class Model extends BaseEntity {
 
-    private String nameModel;
+    private String name;
 }

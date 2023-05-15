@@ -10,5 +10,5 @@ import lombok.Setter;
 @Setter
 public class Brand extends BaseEntity {
 
-    private String nameBrand;
+    private String name;
 }

@@ -11,5 +11,5 @@ import lombok.Setter;
 
 public class Material extends BaseEntity {
 
-    private int registrationNumberMaterial;
+    private int registrationNumber;
 }
