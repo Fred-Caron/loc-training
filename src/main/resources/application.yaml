@@ -1,0 +1,17 @@
+application:
+  title: Loc Training
+  version: 1.0
+
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/locMNS
+    username: root
+    password: ""
+    driver-class-name: "com.mysql.cj.jdbc.Driver"
+  jpa:
+    hibernate:
+      naming:
+        #Permet de définir la stratégie pour identifier les tables et les colonnes sur bases du nom du champ dans Java
+        #Par exemple lastName correspond à la colonne lastName et pas last_name
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+        implicit-strategy: org.hibernate.boot.model.naming.ImplicitNamingStrategyJpaCompliantImpl
