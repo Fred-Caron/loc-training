@@ -1,10 +1,8 @@
 package fr.mns.loctraining.domain.model.location;
 
 import fr.mns.loctraining.domain.model.common.BaseEntity;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import fr.mns.loctraining.domain.model.user.User;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -23,4 +21,8 @@ public class Location extends BaseEntity {
     private Date extensionDuration;
     private String decision;
     private Date decisionDate;
+
+    @ManyToOne
+    @JoinColumn(name = "userId")
+    private User user;
 }
