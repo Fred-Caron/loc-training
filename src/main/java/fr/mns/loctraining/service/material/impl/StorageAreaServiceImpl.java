@@ -1,4 +1,4 @@
-package fr.mns.loctraining.service.materialImpl;
+package fr.mns.loctraining.service.material.impl;
 
 import fr.mns.loctraining.domain.repository.material.StorageAreaRepository;
 import fr.mns.loctraining.service.StorageAreaService;

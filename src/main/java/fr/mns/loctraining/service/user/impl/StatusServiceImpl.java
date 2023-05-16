@@ -1,8 +1,8 @@
-package fr.mns.loctraining.service.userImpl;
+package fr.mns.loctraining.service.user.impl;
 
 import fr.mns.loctraining.domain.model.user.Status;
 import fr.mns.loctraining.domain.repository.user.StatusRepository;
-import fr.mns.loctraining.service.StatusService;
+import fr.mns.loctraining.service.user.StatusService;
 import fr.mns.loctraining.tools.exception.BadRequestException;
 import fr.mns.loctraining.tools.exception.NotFoundException;
 import fr.mns.loctraining.vo.user.status.StatusCreateRequest;
