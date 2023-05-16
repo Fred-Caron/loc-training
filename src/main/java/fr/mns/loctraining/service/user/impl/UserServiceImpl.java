@@ -1,8 +1,9 @@
 package fr.mns.loctraining.service.userImpl;
 
-import fr.mns.loctraining.domain.model.user.User;
+
 import fr.mns.loctraining.domain.repository.user.UserRepository;
-import fr.mns.loctraining.service.UserService;
+
+import fr.mns.loctraining.service.user.UserService;
 import fr.mns.loctraining.vo.user.user.UserCreateRequest;
 import fr.mns.loctraining.vo.user.user.UserDetails;
 import fr.mns.loctraining.vo.user.user.UserUpdateRequest;

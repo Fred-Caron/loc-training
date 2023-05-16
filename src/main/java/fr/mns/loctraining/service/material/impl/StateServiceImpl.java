@@ -1,7 +1,8 @@
 package fr.mns.loctraining.service.material.impl;
 
 import fr.mns.loctraining.domain.repository.material.StateRepository;
-import fr.mns.loctraining.service.StateService;
+
+import fr.mns.loctraining.service.material.StateService;
 import fr.mns.loctraining.vo.material.state.StateCreateRequest;
 import fr.mns.loctraining.vo.material.state.StateDetails;
 import fr.mns.loctraining.vo.material.state.StateUpdateRequest;

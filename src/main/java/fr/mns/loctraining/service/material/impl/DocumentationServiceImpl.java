@@ -1,7 +1,8 @@
 package fr.mns.loctraining.service.material.impl;
 
 import fr.mns.loctraining.domain.repository.material.DocumentationRepository;
-import fr.mns.loctraining.service.DocumentationService;
+
+import fr.mns.loctraining.service.material.DocumentationService;
 import fr.mns.loctraining.vo.material.documentation.DocumentationCreateRequest;
 import fr.mns.loctraining.vo.material.documentation.DocumentationDetails;
 import fr.mns.loctraining.vo.material.documentation.DocumentationUpdateRequest;

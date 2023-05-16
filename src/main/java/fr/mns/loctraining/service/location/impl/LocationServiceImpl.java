@@ -1,7 +1,8 @@
 package fr.mns.loctraining.service.locationImpl;
 
 import fr.mns.loctraining.domain.repository.location.LocationRepository;
-import fr.mns.loctraining.service.LocationService;
+
+import fr.mns.loctraining.service.location.LocationService;
 import fr.mns.loctraining.vo.location.LocationCreateRequest;
 import fr.mns.loctraining.vo.location.LocationDetails;
 import fr.mns.loctraining.vo.location.LocationUpdateRequest;

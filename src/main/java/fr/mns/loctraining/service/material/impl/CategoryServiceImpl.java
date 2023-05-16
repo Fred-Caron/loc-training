@@ -1,7 +1,7 @@
 package fr.mns.loctraining.service.material.impl;
 
 import fr.mns.loctraining.domain.repository.material.CategoryRepository;
-import fr.mns.loctraining.service.CategoryService;
+import fr.mns.loctraining.service.material.CategoryService;
 import fr.mns.loctraining.vo.material.category.CategoryCreateRequest;
 import fr.mns.loctraining.vo.material.category.CategoryDetails;
 import fr.mns.loctraining.vo.material.category.CategoryUpdateRequest;

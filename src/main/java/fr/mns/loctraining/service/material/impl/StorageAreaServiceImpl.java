@@ -1,7 +1,8 @@
 package fr.mns.loctraining.service.material.impl;
 
 import fr.mns.loctraining.domain.repository.material.StorageAreaRepository;
-import fr.mns.loctraining.service.StorageAreaService;
+
+import fr.mns.loctraining.service.material.StorageAreaService;
 import fr.mns.loctraining.vo.material.storageArea.StorageAreaCreateRequest;
 import fr.mns.loctraining.vo.material.storageArea.StorageAreaDetails;
 import fr.mns.loctraining.vo.material.storageArea.StorageAreaUpdateRequest;

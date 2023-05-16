@@ -1,7 +1,8 @@
 package fr.mns.loctraining.service.material.impl;
 
 import fr.mns.loctraining.domain.repository.material.ModelRepository;
-import fr.mns.loctraining.service.ModelService;
+
+import fr.mns.loctraining.service.material.ModelService;
 import fr.mns.loctraining.vo.material.model.ModelCreateRequest;
 import fr.mns.loctraining.vo.material.model.ModelDetails;
 import fr.mns.loctraining.vo.material.model.ModelUpdateRequest;

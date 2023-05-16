@@ -1,7 +1,8 @@
 package fr.mns.loctraining.service.material.impl;
 
 import fr.mns.loctraining.domain.repository.material.BrandRepository;
-import fr.mns.loctraining.service.BrandService;
+
+import fr.mns.loctraining.service.material.BrandService;
 import fr.mns.loctraining.vo.material.brand.BrandCreateRequest;
 import fr.mns.loctraining.vo.material.brand.BrandDetails;
 import fr.mns.loctraining.vo.material.brand.BrandUpdateRequest;
