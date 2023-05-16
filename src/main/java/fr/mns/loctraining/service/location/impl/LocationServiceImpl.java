@@ -1,7 +1,6 @@
-package fr.mns.loctraining.service.locationImpl;
+package fr.mns.loctraining.service.location.impl;
 
 import fr.mns.loctraining.domain.repository.location.LocationRepository;
-
 import fr.mns.loctraining.service.location.LocationService;
 import fr.mns.loctraining.vo.location.LocationCreateRequest;
 import fr.mns.loctraining.vo.location.LocationDetails;
@@ -11,7 +10,8 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@Service@AllArgsConstructor
+@Service
+@AllArgsConstructor
 public class LocationServiceImpl implements LocationService {
     private LocationRepository locationRepository;
 
