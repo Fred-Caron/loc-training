@@ -1,4 +1,4 @@
-package fr.mns.loctraining.service.impl;
+package fr.mns.loctraining.service.userImpl;
 
 import fr.mns.loctraining.domain.model.user.Status;
 import fr.mns.loctraining.domain.repository.user.StatusRepository;

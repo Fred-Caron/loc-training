@@ -1,6 +1,6 @@
 package fr.mns.loctraining.domain.model.material;
 
-import fr.mns.loctraining.domain.model.common.BaseEntity;
+import fr.mns.loctraining.domain.model.common.NamedEntity;
 import jakarta.persistence.Entity;
 import lombok.Getter;
 import lombok.Setter;
@@ -9,6 +9,6 @@ import lombok.Setter;
 @Getter
 @Setter
 
-public class StorageArea extends BaseEntity {
-    private String name;
+public class StorageArea extends NamedEntity {
+
 }

@@ -1,6 +1,6 @@
 package fr.mns.loctraining.domain.model.user;
 
-import fr.mns.loctraining.domain.model.common.BaseEntity;
+import fr.mns.loctraining.domain.model.common.NamedEntity;
 import jakarta.persistence.Entity;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,7 +11,6 @@ import lombok.Setter;
 @Getter
 // L'annotation Lombok Setter sert à générer les setters lors de la compilation
 @Setter
-public class Status extends BaseEntity {
+public class Status extends NamedEntity {
 
-    private String name;
 }
