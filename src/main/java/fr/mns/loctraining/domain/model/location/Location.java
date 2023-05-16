@@ -2,7 +2,9 @@ package fr.mns.loctraining.domain.model.location;
 
 import fr.mns.loctraining.domain.model.common.BaseEntity;
 import fr.mns.loctraining.domain.model.user.User;
-import jakarta.persistence.*;
+import jakarta.persistence.Entity;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import lombok.Getter;
 import lombok.Setter;
 
