@@ -4,11 +4,15 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.MappedSuperclass;
+import lombok.Getter;
+import lombok.Setter;
 
 // L'annotation sert à faire de l'héritage avec hibernate. Elle permet à une classe enfant Entity d'étendre cette classe parente
 // Attention une classe @MappedSuperclass ne peut pas être Entity en même temps
 // Ici on définit une classe de base qui va permettre d'harmoniser les ID de toutes les autres classes Entity, on aura toujours comme ID un int nommé 'id'
 @MappedSuperclass
+@Getter
+@Setter
 public class BaseEntity {
 
     // L'annotion Id sert à définir la clé primaire
