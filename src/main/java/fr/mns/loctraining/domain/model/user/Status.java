@@ -15,5 +15,6 @@ import lombok.Setter;
 // L'annotation Lombok Setter sert à générer les setters lors de la compilation
 @Setter
 public class Status extends BaseEntity {
+
     private String name;
 }
