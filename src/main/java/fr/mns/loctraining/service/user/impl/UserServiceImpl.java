@@ -1,4 +1,4 @@
-package fr.mns.loctraining.service.userImpl;
+package fr.mns.loctraining.service.user.impl;
 
 
 import fr.mns.loctraining.domain.repository.user.UserRepository;
