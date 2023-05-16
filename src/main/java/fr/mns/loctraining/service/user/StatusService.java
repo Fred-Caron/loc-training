@@ -1,4 +1,4 @@
-package fr.mns.loctraining.service;
+package fr.mns.loctraining.service.user;
 
 import fr.mns.loctraining.vo.user.status.StatusCreateRequest;
 import fr.mns.loctraining.vo.user.status.StatusDetails;

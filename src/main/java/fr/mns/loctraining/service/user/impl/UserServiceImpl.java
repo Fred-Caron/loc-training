@@ -1,8 +1,6 @@
-package fr.mns.loctraining.service.userImpl;
+package fr.mns.loctraining.service.user.impl;
 
-import fr.mns.loctraining.domain.model.user.User;
 import fr.mns.loctraining.domain.repository.user.UserRepository;
-import fr.mns.loctraining.vo.user.user.UserDetails;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 

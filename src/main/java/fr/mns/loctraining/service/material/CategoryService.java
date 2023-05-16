@@ -1,4 +1,4 @@
-package fr.mns.loctraining.service;
+package fr.mns.loctraining.service.material;
 
 import fr.mns.loctraining.vo.material.category.CategoryCreateRequest;
 import fr.mns.loctraining.vo.material.category.CategoryDetails;

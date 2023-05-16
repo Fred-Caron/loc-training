@@ -1,6 +1,6 @@
 package fr.mns.loctraining.controller.user;
 
-import fr.mns.loctraining.service.StatusService;
+import fr.mns.loctraining.service.user.StatusService;
 import fr.mns.loctraining.vo.user.status.StatusCreateRequest;
 import fr.mns.loctraining.vo.user.status.StatusDetails;
 import fr.mns.loctraining.vo.user.status.StatusUpdateRequest;

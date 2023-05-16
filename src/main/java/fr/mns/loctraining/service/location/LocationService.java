@@ -1,4 +1,4 @@
-package fr.mns.loctraining.service;
+package fr.mns.loctraining.service.location;
 
 import fr.mns.loctraining.vo.location.LocationCreateRequest;
 import fr.mns.loctraining.vo.location.LocationDetails;
@@ -9,9 +9,12 @@ import java.util.List;
 public interface LocationService {
 
     LocationDetails getDetails(Integer id);
-    List<LocationDetails> getList();
-    LocationDetails create (LocationCreateRequest request);
 
-    LocationDetails update (Integer id, LocationUpdateRequest request);
+    List<LocationDetails> getList();
+
+    LocationDetails create(LocationCreateRequest request);
+
+    LocationDetails update(Integer id, LocationUpdateRequest request);
+
     void delete(Integer id);
 }
