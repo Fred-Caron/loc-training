@@ -5,6 +5,7 @@ import fr.mns.loctraining.domain.repository.user.StatusRepository;
 import fr.mns.loctraining.service.user.StatusService;
 import fr.mns.loctraining.tools.exception.BadRequestException;
 import fr.mns.loctraining.tools.exception.NotFoundException;
+import fr.mns.loctraining.tools.utils.MappingUtils;
 import fr.mns.loctraining.vo.user.status.StatusCreateRequest;
 import fr.mns.loctraining.vo.user.status.StatusDetails;
 import fr.mns.loctraining.vo.user.status.StatusUpdateRequest;
@@ -14,7 +15,6 @@ import org.springframework.util.StringUtils;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 // Permet de définir la classe comment étant un Service (donc un Bean Spring)
 @Service
@@ -30,14 +30,14 @@ public class StatusServiceImpl implements StatusService {
             throw new NotFoundException();
         }
 
-        return getDetails(status);
+        return MappingUtils.getDetails(status);
     }
 
     @Override
     public List<StatusDetails> getList() {
         List<Status> statusList = statusRepository.findAll();
         List<StatusDetails> statusDetailsList = new ArrayList<>();
-        for(Status status : statusList){
+        for (Status status : statusList) {
             StatusDetails details = getDetails(status);
             statusDetailsList.add(details);
         }

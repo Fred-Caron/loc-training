@@ -8,8 +8,11 @@ import fr.mns.loctraining.vo.location.LocationDetails;
 import fr.mns.loctraining.vo.material.state.StateDetails;
 import fr.mns.loctraining.vo.user.status.StatusDetails;
 import fr.mns.loctraining.vo.user.user.UserDetails;
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
 
-final class MappingUtils {
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
+public final class MappingUtils {
 
     // Méthode pour convertir le Status en StatusDetails (identique à celle dans StatusServiceImpl)
     public static StatusDetails getDetails(Status status) {
@@ -20,7 +23,7 @@ final class MappingUtils {
         return details;
     }
 
-    public static LocationDetails getDetails(Location location){
+    public static LocationDetails getDetails(Location location) {
         LocationDetails details = new LocationDetails();
         details.setId(location.getId());
         details.setAskingDate(location.getAskingDate());
@@ -32,7 +35,7 @@ final class MappingUtils {
         details.setExtensionDuration(location.getExtensionDuration());
         details.setDecision(location.getDecision());
         details.setDecisionDate(location.getDecisionDate());
-        details.setUser(getUserDetails(location.getUser()));
+        details.setUser(getDetails(location.getUser()));
         return details;
     }
 
@@ -47,11 +50,11 @@ final class MappingUtils {
         details.setAffiliation(user.getAffiliation());
         details.setPhone(user.getPhone());
         // On ajoute les infos du status sous forme de StatusDetails
-        details.setStatus(getStatusDetails(user.getStatus()));
+        details.setStatus(getDetails(user.getStatus()));
         return details;
     }
 
-    public static StateDetails getDetails(State state){
+    public static StateDetails getDetails(State state) {
         StateDetails details = new StateDetails();
         details.setId(state.getId());
         details.setName(state.getName());
