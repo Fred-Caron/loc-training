@@ -4,6 +4,7 @@ import fr.mns.loctraining.domain.model.location.Location;
 import fr.mns.loctraining.domain.model.user.Status;
 import fr.mns.loctraining.domain.model.user.User;
 import fr.mns.loctraining.domain.repository.location.LocationRepository;
+import fr.mns.loctraining.domain.repository.user.StatusRepository;
 import fr.mns.loctraining.domain.repository.user.UserRepository;
 import fr.mns.loctraining.service.location.LocationService;
 import fr.mns.loctraining.tools.exception.BadRequestException;
@@ -47,28 +48,28 @@ public class LocationServiceImpl implements LocationService {
 
     @Override
     public LocationDetails create(LocationCreateRequest request) {
-        if (!StringUtils.hasText(String.valueOf(request.getAskingDate()))) {
+        if (request.getAskingDate() == null) {
             throw new BadRequestException("Asking date should not be empty");
         }
         if (!StringUtils.hasText(request.getReason())) {
             throw new BadRequestException("Reason should not be empty");
         }
-        if (!StringUtils.hasText(String.valueOf(request.getPrevisionnalStartingDate()))) {
+        if (request.getPrevisionnalStartingDate() == null) {
             throw new BadRequestException("Previsionnal starting date should not be empty");
         }
-        if (!StringUtils.hasText(String.valueOf(request.getPrevisionnalEndDate()))) {
+        if (request.getPrevisionnalEndDate() == null) {
             throw new BadRequestException("Previsionnal ending date should not be empty");
         }
-        if (!StringUtils.hasText(String.valueOf(request.getExtentionDate()))) {
+        if (request.getExtentionDate() == null) {
             throw new BadRequestException("Extention date should not be empty");
         }
-        if (!StringUtils.hasText(String.valueOf(request.getExtendionDateValidation()))) {
+        if (request.getExtendionDateValidation() == null) {
             throw new BadRequestException("Extention date validation should not be empty");
         }
-        if (!StringUtils.hasText(String.valueOf(request.getExtensionDuration()))) {
+        if (request.getExtensionDuration() == null) {
             throw new BadRequestException("Extention duration should not be empty");
         }
-        if (!StringUtils.hasText(String.valueOf(request.getDecisionDate()))) {
+        if (request.getDecisionDate() == null) {
             throw new BadRequestException("Decision date should not be empty");
         }
         if (!StringUtils.hasText(request.getDecision())) {
@@ -151,32 +152,16 @@ public class LocationServiceImpl implements LocationService {
         locationRepository.delete(location);
     }
 
-    private LocationDetails getDetails(Location location){
-        LocationDetails details = new LocationDetails();
-        details.setId(location.getId());
-        details.setAskingDate(location.getAskingDate());
-        details.setReason(location.getReason());
-        details.setPrevisionnalStartingDate(location.getPrevisionnalStartingDate());
-        details.setPrevisionnalEndDate(location.getPrevisionnalEndDate());
-        details.setExtentionDate(location.getExtentionDate());
-        details.setExtendionDateValidation(location.getExtentionDateValidation());
-        details.setExtensionDuration(location.getExtensionDuration());
-        details.setDecision(location.getDecision());
-        details.setDecisionDate(location.getDecisionDate());
-        details.setUser(getUserDetails(location.getUser()));
-        return details;
-    }
-
     private UserDetails getUserDetails(User user){
         UserDetails details = new UserDetails();
-        details.setLastname(details.getLastname());
-        details.setFirstname(details.getFirstname());
-        details.setEmail(details.getEmail());
-        details.setLogin(details.getLogin());
-        details.setGender(details.getGender());
-        details.setPhone(details.getPhone());
-        details.setAffiliation(details.getAffiliation());
-        details.setStatus(details.getStatus());
+        details.setLastname(user.getLastname());
+        details.setFirstname(user.getFirstname());
+        details.setEmail(user.getEmail());
+        details.setLogin(user.getLogin());
+        details.setGender(user.getGender());
+        details.setPhone(user.getPhone());
+        details.setAffiliation(user.getAffiliation());
+        details.setStatus();
         return details;
     }
 

@@ -82,12 +82,4 @@ public class StatusServiceImpl implements StatusService {
         }
         statusRepository.delete(status);
     }
-
-    private StatusDetails getDetails(Status status) {
-        StatusDetails details = new StatusDetails();
-        details.setId(status.getId());
-        details.setName(status.getName());
-
-        return details;
-    }
 }

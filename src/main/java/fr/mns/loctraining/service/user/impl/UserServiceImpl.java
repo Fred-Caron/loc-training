@@ -72,8 +72,8 @@ public class UserServiceImpl implements UserService {
         Status status = getStatus(request.getStatusId());
 
         User user = new User();
-        user.setFirstName(request.getFirstname());
-        user.setLastName(request.getLastname());
+        user.setFirstname(request.getFirstname());
+        user.setLastname(request.getLastname());
         user.setEmail(request.getEmail());
         user.setLogin(request.getLogin());
         user.setGender(request.getGender());
@@ -116,8 +116,8 @@ public class UserServiceImpl implements UserService {
 
         Status status = getStatus(request.getStatusId());
 
-        user.setFirstName(request.getFirstname());
-        user.setLastName(request.getLastname());
+        user.setFirstname(request.getFirstname());
+        user.setLastname(request.getLastname());
         user.setEmail(request.getEmail());
         user.setLogin(request.getLogin());
         user.setGender(request.getGender());
@@ -148,27 +148,8 @@ public class UserServiceImpl implements UserService {
         return status;
     }
 
-    private UserDetails getDetails(User user) {
-        UserDetails details = new UserDetails();
-        details.setId(user.getId());
-        details.setFirstname(user.getFirstName());
-        details.setLastname(user.getLastName());
-        details.setEmail(user.getEmail());
-        details.setLogin(user.getLogin());
-        details.setGender(user.getGender());
-        details.setAffiliation(user.getAffiliation());
-        details.setPhone(user.getPhone());
-        // On ajoute les infos du status sous forme de StatusDetails
-        details.setStatus(getStatusDetails(user.getStatus()));
-        return details;
-    }
 
-    // Méthode pour convertir le Status en StatusDetails (identique à celle dans StatusServiceImpl)
-    private StatusDetails getStatusDetails(Status status) {
-        StatusDetails details = new StatusDetails();
-        details.setId(status.getId());
-        details.setName(status.getName());
 
-        return details;
-    }
+
+
 }

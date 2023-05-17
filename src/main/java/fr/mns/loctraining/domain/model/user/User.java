@@ -17,8 +17,8 @@ import java.io.File;
 @Setter
 public class User extends BaseEntity {
 
-    private String lastName;
-    private String firstName;
+    private String lastname;
+    private String firstname;
     private String email;
     private String password;
     private String login;
