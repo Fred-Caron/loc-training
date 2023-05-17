@@ -21,5 +21,5 @@ public class LocationCreateRequest {
     private String decision;
     private Date decisionDate;
 
-    private User user;
+    private Integer userId;
 }

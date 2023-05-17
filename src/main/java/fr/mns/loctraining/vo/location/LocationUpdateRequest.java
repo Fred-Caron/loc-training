@@ -20,5 +20,5 @@ public class LocationUpdateRequest {
     private Date extensionDuration;
     private String decision;
     private Date decisionDate;
-    private User user;
+    private Integer userId;
 }

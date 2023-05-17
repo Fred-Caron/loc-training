@@ -19,7 +19,7 @@ public class Location extends BaseEntity {
     private Date previsionnalStartingDate;
     private Date previsionnalEndDate;
     private Date extentionDate;
-    private Date extendionDateValidation;
+    private Date extentionDateValidation;
     private Date extensionDuration;
     private String decision;
     private Date decisionDate;

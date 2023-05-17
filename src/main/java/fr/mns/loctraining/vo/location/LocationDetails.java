@@ -1,6 +1,7 @@
 package fr.mns.loctraining.vo.location;
 
 import fr.mns.loctraining.domain.model.user.User;
+import fr.mns.loctraining.vo.user.user.UserDetails;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import lombok.Getter;
@@ -22,5 +23,5 @@ public class LocationDetails {
     private String decision;
     private Date decisionDate;
 
-    private User user;
+    private UserDetails user;
 }
