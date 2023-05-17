@@ -10,9 +10,8 @@ public class UserDetails {
     private String lastname;
     private String firstname;
     private String email;
-    private String password;
     private String login;
     private String gender;
     private String affiliation;
-    private int phone;
+    private String phone;
 }

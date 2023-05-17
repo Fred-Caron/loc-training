@@ -13,5 +13,5 @@ public class UserCreateRequest {
     private String login;
     private String gender;
     private String affiliation;
-    private int phone;
+    private String phone;
 }

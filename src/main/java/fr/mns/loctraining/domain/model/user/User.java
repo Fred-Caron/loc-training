@@ -24,7 +24,7 @@ public class User extends BaseEntity {
     private String login;
     private String gender;
     private String phone;
-    private File picture;
+    private String affiliation;
 
     // L'annotation ManyToOne indique une relation ManyToOne, ici on indique une relation ManyToOne entre User et Status
     @ManyToOne

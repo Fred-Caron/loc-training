@@ -15,4 +15,7 @@ public interface BaseRepository<T extends BaseEntity> extends JpaRepository<T, I
         }
         return findById(id).orElse(null);
     }
+    //méthode qui permet de ne pas avoir l'exception qui peut tomber avec findById si on passe un id null
+    // permet de ne pas devoir faire des if(id == null) throw new ...
+    // on optimise !!
 }

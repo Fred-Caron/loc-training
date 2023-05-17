@@ -12,6 +12,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -34,9 +35,18 @@ public class StatusServiceImpl implements StatusService {
 
     @Override
     public List<StatusDetails> getList() {
-        return statusRepository.findAll().stream()
+        List<Status> statusList = statusRepository.findAll();
+        List<StatusDetails> statusDetailsList = new ArrayList<>();
+        for(Status status : statusList){
+            StatusDetails details = getDetails(status);
+            statusDetailsList.add(details);
+        }
+
+        return statusDetailsList;
+
+        /*return statusRepository.findAll().stream()
                 .map(this::getDetails)
-                .collect(Collectors.toList());
+                .collect(Collectors.toList());*/
     }
 
     @Override

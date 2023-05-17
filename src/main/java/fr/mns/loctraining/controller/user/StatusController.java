@@ -20,7 +20,7 @@ import java.util.List;
 @RestController
 // Permet de définir le path du controller
 @RequestMapping(value = "status")
-// Lombok : génère un constructeur avec tous les arguments en paramètre ici StatusController(StatusService statusService)
+// Lombok (librairie) : génère un constructeur avec tous les arguments en paramètre ici StatusController(StatusService statusService)
 @AllArgsConstructor
 public class StatusController {
 
