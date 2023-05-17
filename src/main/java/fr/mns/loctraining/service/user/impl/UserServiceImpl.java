@@ -28,7 +28,7 @@ public class UserServiceImpl implements UserService {
         if(user == null){
             throw new NotFoundException();
         }
-        return getDetail(id);
+        return getDetails(user) ;
     }
 
     @Override
@@ -36,7 +36,7 @@ public class UserServiceImpl implements UserService {
         List<User> userList = userRepository.findAll();
         List<UserDetails> userDetailsList = new ArrayList<>();
         for (User user : userList) {
-            UserDetails details = getDetail(user.getId());
+            UserDetails details = getDetails(user);
             userDetailsList.add(details);
         }
         return userDetailsList;
@@ -81,11 +81,60 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public UserDetails update(Integer id, UserUpdateRequest request) {
-        return null;
+        User user = userRepository.findByIdNullSafe(id);
+        if(user == null){
+            throw new NotFoundException();
+        }
+        if(!StringUtils.hasText(request.getLastname()) || !StringUtils.hasText(request.getFirstname())){
+            throw new BadRequestException("Firstname or lastname should not be empty");
+        }
+        if(!StringUtils.hasText(request.getEmail())){
+            throw new BadRequestException("Email should not be empty");
+        }
+        if(!StringUtils.hasText(request.getPassword())){
+            throw new BadRequestException("Password should not be empty");
+        }
+        if(!StringUtils.hasText(request.getLogin())){
+            throw new BadRequestException("Login should not be empty");
+        }
+        if(!StringUtils.hasText(request.getGender())){
+            throw new BadRequestException("Gender should not be empty");
+        }
+        if(!StringUtils.hasText(request.getAffiliation())){
+            throw new BadRequestException("Affiliation should not be empty");
+        }
+        if(!StringUtils.hasText(request.getPhone())){
+            throw new BadRequestException("Phone should not be empty");
+        }
+        //le status ?
+        user.setFirstName(request.getFirstname());
+        user.setLastName(request.getLastname());
+        user.setEmail(request.getEmail());
+        user.setLogin(request.getLogin());
+        user.setGender(request.getGender());
+        user.setPassword(request.getPassword());
+        user.setPhone(request.getPhone());
+        user.setAffiliation(request.getAffiliation());
+        user = userRepository.save(user);
+        return getDetail(user.getId());
     }
 
     @Override
     public void delete(Integer id) {
 
+    }
+
+    private UserDetails getDetails(User user){
+        UserDetails details = new UserDetails();
+        details.setId(user.getId());
+        details.setFirstname(user.getFirstName());
+        details.setLastname(user.getLastName());
+        details.setEmail(user.getEmail());
+        details.setLogin(user.getLogin());
+        details.setGender(user.getGender());
+        details.setAffiliation(user.getAffiliation());
+        details.setPhone(user.getPhone());
+
+        return details;
     }
 }
