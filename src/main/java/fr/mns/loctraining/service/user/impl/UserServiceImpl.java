@@ -121,7 +121,11 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void delete(Integer id) {
-
+        User user = userRepository.findByIdNullSafe(id);
+        if(user == null){
+            throw new NotFoundException();
+        }
+        userRepository.delete(user);
     }
 
     private UserDetails getDetails(User user){
