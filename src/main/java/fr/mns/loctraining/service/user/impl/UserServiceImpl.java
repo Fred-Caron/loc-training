@@ -23,13 +23,14 @@ public class UserServiceImpl implements UserService {
     private final UserRepository userRepository;
 
     @Override
-    public UserDetails getDetail(Integer id) {
+    public UserDetails getDetails(Integer id) {
         User user = userRepository.findByIdNullSafe(id);
         if(user == null){
             throw new NotFoundException();
         }
         return getDetails(user) ;
     }
+
 
     @Override
     public List<UserDetails> getList() {
@@ -76,7 +77,7 @@ public class UserServiceImpl implements UserService {
         user.setPhone(request.getPhone());
         user.setAffiliation(request.getAffiliation());
         user = userRepository.save(user);
-        return getDetail(user.getId());
+        return getDetails(user);
     }
 
     @Override
@@ -116,7 +117,7 @@ public class UserServiceImpl implements UserService {
         user.setPhone(request.getPhone());
         user.setAffiliation(request.getAffiliation());
         user = userRepository.save(user);
-        return getDetail(user.getId());
+        return getDetails(user);
     }
 
     @Override

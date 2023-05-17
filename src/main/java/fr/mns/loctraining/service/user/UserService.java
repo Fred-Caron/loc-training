@@ -7,7 +7,7 @@ import fr.mns.loctraining.vo.user.user.UserUpdateRequest;
 import java.util.List;
 
 public interface UserService {
-    UserDetails getDetail(Integer id);
+    UserDetails getDetails(Integer id);
 
     List<UserDetails> getList();
 
