@@ -14,4 +14,6 @@ public class UserUpdateRequest {
     private String gender;
     private String affiliation;
     private String phone;
+    // Ici on ajoute l'id du status dans la request
+    private Integer statusId;
 }

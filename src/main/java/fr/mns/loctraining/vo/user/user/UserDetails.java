@@ -1,5 +1,6 @@
 package fr.mns.loctraining.vo.user.user;
 
+import fr.mns.loctraining.vo.user.status.StatusDetails;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -14,4 +15,6 @@ public class UserDetails {
     private String gender;
     private String affiliation;
     private String phone;
+    // Ici on ajoute le details du status (id + name)
+    private StatusDetails status;
 }
