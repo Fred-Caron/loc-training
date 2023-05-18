@@ -7,7 +7,7 @@ import fr.mns.loctraining.domain.repository.user.UserRepository;
 import fr.mns.loctraining.service.user.UserService;
 import fr.mns.loctraining.tools.exception.BadRequestException;
 import fr.mns.loctraining.tools.exception.NotFoundException;
-import fr.mns.loctraining.vo.user.status.StatusDetails;
+import fr.mns.loctraining.tools.utils.MappingUtils;
 import fr.mns.loctraining.vo.user.user.UserCreateRequest;
 import fr.mns.loctraining.vo.user.user.UserDetails;
 import fr.mns.loctraining.vo.user.user.UserUpdateRequest;
@@ -31,7 +31,7 @@ public class UserServiceImpl implements UserService {
         if (user == null) {
             throw new NotFoundException();
         }
-        return getDetails(user);
+        return MappingUtils.getUserDetails(user);
     }
 
     @Override
@@ -39,7 +39,7 @@ public class UserServiceImpl implements UserService {
         List<User> userList = userRepository.findAll();
         List<UserDetails> userDetailsList = new ArrayList<>();
         for (User user : userList) {
-            UserDetails details = getDetails(user);
+            UserDetails details = MappingUtils.getUserDetails(user);
             userDetailsList.add(details);
         }
         return userDetailsList;
@@ -83,7 +83,7 @@ public class UserServiceImpl implements UserService {
         // On set le status
         user.setStatus(status);
         user = userRepository.save(user);
-        return getDetails(user);
+        return MappingUtils.getUserDetails(user);
     }
 
     @Override
@@ -126,7 +126,8 @@ public class UserServiceImpl implements UserService {
         user.setAffiliation(request.getAffiliation());
         user.setStatus(status);
         user = userRepository.save(user);
-        return getDetails(user);
+        return MappingUtils.getUserDetails(user);
+
     }
 
     @Override
@@ -141,15 +142,6 @@ public class UserServiceImpl implements UserService {
     // Méthode pour retrouver le status sur base de l'id
     // Si pas de status alors BadRequest
     private Status getStatus(Integer statusId) {
-        Status status = statusRepository.findByIdNullSafe(statusId);
-        if (status == null) {
-            throw new BadRequestException("Incorrect status");
-        }
-        return status;
+        return statusRepository.findByIdWithException(statusId, "status");
     }
-
-
-
-
-
 }

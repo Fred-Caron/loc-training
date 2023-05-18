@@ -1,6 +1,7 @@
 package fr.mns.loctraining.domain.repository.common;
 
 import fr.mns.loctraining.domain.model.common.BaseEntity;
+import fr.mns.loctraining.tools.exception.BadRequestException;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 // Ici on va créer une interface qui sera utilisée par tous nos repository
@@ -18,4 +19,12 @@ public interface BaseRepository<T extends BaseEntity> extends JpaRepository<T, I
     //méthode qui permet de ne pas avoir l'exception qui peut tomber avec findById si on passe un id null
     // permet de ne pas devoir faire des if(id == null) throw new ...
     // on optimise !!
+
+    default T findByIdWithException (Integer id, String type){
+        T entity = findByIdNullSafe(id);
+        if(entity == null){
+            throw new BadRequestException("Incorrect " + type);
+        }
+        return entity;
+    }
 }

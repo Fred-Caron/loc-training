@@ -1,18 +1,17 @@
 package fr.mns.loctraining.service.location.impl;
 
 import fr.mns.loctraining.domain.model.location.Location;
-import fr.mns.loctraining.domain.model.user.Status;
+import fr.mns.loctraining.domain.model.material.StorageArea;
 import fr.mns.loctraining.domain.model.user.User;
 import fr.mns.loctraining.domain.repository.location.LocationRepository;
-import fr.mns.loctraining.domain.repository.user.StatusRepository;
 import fr.mns.loctraining.domain.repository.user.UserRepository;
 import fr.mns.loctraining.service.location.LocationService;
 import fr.mns.loctraining.tools.exception.BadRequestException;
 import fr.mns.loctraining.tools.exception.NotFoundException;
+import fr.mns.loctraining.tools.utils.MappingUtils;
 import fr.mns.loctraining.vo.location.LocationCreateRequest;
 import fr.mns.loctraining.vo.location.LocationDetails;
 import fr.mns.loctraining.vo.location.LocationUpdateRequest;
-import fr.mns.loctraining.vo.user.user.UserDetails;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
@@ -32,7 +31,7 @@ public class LocationServiceImpl implements LocationService {
         if(location == null){
             throw new NotFoundException();
         }
-        return getDetails(location);
+        return MappingUtils.getLocationDetails(location);
     }
 
     @Override
@@ -40,7 +39,7 @@ public class LocationServiceImpl implements LocationService {
         List<Location> locationList = locationRepository.findAll();
         List<LocationDetails> locationDetailsList = new ArrayList<>();
         for (Location location : locationList) {
-            LocationDetails details = getDetails(location);
+            LocationDetails details = MappingUtils.getLocationDetails(location);
             locationDetailsList.add(details);
         }
         return locationDetailsList;
@@ -90,7 +89,7 @@ public class LocationServiceImpl implements LocationService {
         location.setDecisionDate(request.getDecisionDate());
         location.setUser(user);
         location = locationRepository.save(location);
-        return getDetails(location);
+        return MappingUtils.getLocationDetails(location);
     }
 
     @Override
@@ -140,7 +139,7 @@ public class LocationServiceImpl implements LocationService {
         location.setDecisionDate(request.getDecisionDate());
         location.setUser(user);
         location = locationRepository.save(location);
-        return getDetails(location);
+        return MappingUtils.getLocationDetails(location);
     }
 
     @Override
@@ -152,24 +151,7 @@ public class LocationServiceImpl implements LocationService {
         locationRepository.delete(location);
     }
 
-    private UserDetails getUserDetails(User user){
-        UserDetails details = new UserDetails();
-        details.setLastname(user.getLastname());
-        details.setFirstname(user.getFirstname());
-        details.setEmail(user.getEmail());
-        details.setLogin(user.getLogin());
-        details.setGender(user.getGender());
-        details.setPhone(user.getPhone());
-        details.setAffiliation(user.getAffiliation());
-        details.setStatus();
-        return details;
-    }
-
     private User getUser(Integer userId) {
-        User user = userRepository.findByIdNullSafe(userId);
-        if (user == null) {
-            throw new BadRequestException("Incorrect user");
-        }
-        return user;
+        return userRepository.findByIdWithException(userId, "user");
     }
 }

@@ -30,7 +30,7 @@ public class StatusServiceImpl implements StatusService {
             throw new NotFoundException();
         }
 
-        return MappingUtils.getDetails(status);
+        return MappingUtils.getStatusDetails(status);
     }
 
     @Override
@@ -38,7 +38,7 @@ public class StatusServiceImpl implements StatusService {
         List<Status> statusList = statusRepository.findAll();
         List<StatusDetails> statusDetailsList = new ArrayList<>();
         for (Status status : statusList) {
-            StatusDetails details = getDetails(status);
+            StatusDetails details = MappingUtils.getStatusDetails(status);
             statusDetailsList.add(details);
         }
 
@@ -57,7 +57,7 @@ public class StatusServiceImpl implements StatusService {
         Status status = new Status();
         status.setName(request.getName());
         status = statusRepository.save(status);
-        return getDetails(status);
+        return MappingUtils.getStatusDetails(status);
     }
 
     @Override
@@ -71,7 +71,7 @@ public class StatusServiceImpl implements StatusService {
         }
         status.setName(request.getName());
         status = statusRepository.save(status);
-        return getDetails(status);
+        return MappingUtils.getStatusDetails(status);
     }
 
     @Override

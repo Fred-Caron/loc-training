@@ -10,13 +10,14 @@ import lombok.Setter;
 @Getter
 @Setter
 public class MaterialCreateRequest {
-    private int registrationNumber;
+    private Integer registrationNumber;
 
-    private Model model;
+    private Integer modelId;
 
-    private Category category;
+    private Integer categoryId;
 
-    private StorageArea storageArea;
+    private Integer storageAreaId;
 
-    private Documentation documentation;
+    private Integer documentationId;
+
 }

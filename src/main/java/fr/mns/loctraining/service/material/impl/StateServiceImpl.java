@@ -6,6 +6,7 @@ import fr.mns.loctraining.domain.repository.material.StateRepository;
 import fr.mns.loctraining.service.material.StateService;
 import fr.mns.loctraining.tools.exception.BadRequestException;
 import fr.mns.loctraining.tools.exception.NotFoundException;
+import fr.mns.loctraining.tools.utils.MappingUtils;
 import fr.mns.loctraining.vo.material.state.StateCreateRequest;
 import fr.mns.loctraining.vo.material.state.StateDetails;
 import fr.mns.loctraining.vo.material.state.StateUpdateRequest;
@@ -27,7 +28,7 @@ public class StateServiceImpl implements StateService {
         if(state == null){
             throw new NotFoundException();
         }
-        return getDetails(state);
+        return MappingUtils.getStateDetails(state);
     }
 
     @Override
@@ -35,7 +36,7 @@ public class StateServiceImpl implements StateService {
         List<State> stateList = stateRepository.findAll();
         List<StateDetails> stateDetailsList = new ArrayList<>();
         for (State state : stateList) {
-            StateDetails details = getDetails(state);
+            StateDetails details = MappingUtils.getStateDetails(state);
             stateDetailsList.add(details);
         }
         return stateDetailsList;
@@ -49,7 +50,7 @@ public class StateServiceImpl implements StateService {
         State state = new State();
         state.setName(request.getName());
         state = stateRepository.save(state);
-        return getDetails(state);
+        return MappingUtils.getStateDetails(state);
     }
 
     @Override
@@ -63,11 +64,15 @@ public class StateServiceImpl implements StateService {
         }
         state.setName(request.getName());
         state = stateRepository.save(state);
-        return getDetails(state);
+        return MappingUtils.getStateDetails(state);
     }
 
     @Override
     public void delete(Integer id) {
-
+        State state = stateRepository.findByIdNullSafe(id);
+        if(state == null){
+            throw new NotFoundException();
+        }
+        stateRepository.delete(state);
     }
 }

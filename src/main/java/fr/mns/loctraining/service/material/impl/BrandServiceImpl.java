@@ -6,6 +6,7 @@ import fr.mns.loctraining.domain.repository.material.BrandRepository;
 import fr.mns.loctraining.service.material.BrandService;
 import fr.mns.loctraining.tools.exception.BadRequestException;
 import fr.mns.loctraining.tools.exception.NotFoundException;
+import fr.mns.loctraining.tools.utils.MappingUtils;
 import fr.mns.loctraining.vo.material.brand.BrandCreateRequest;
 import fr.mns.loctraining.vo.material.brand.BrandDetails;
 import fr.mns.loctraining.vo.material.brand.BrandUpdateRequest;
@@ -27,7 +28,7 @@ public class BrandServiceImpl implements BrandService {
         if(brand == null){
             throw new NotFoundException();
         }
-        return getDetails(brand);
+        return MappingUtils.getBrandDetails(brand);
     }
 
     @Override
@@ -35,7 +36,7 @@ public class BrandServiceImpl implements BrandService {
         List<Brand> brandList = brandRepository.findAll();
         List<BrandDetails> brandDetailsList = new ArrayList<>();
         for (Brand brand : brandList) {
-            BrandDetails details = getDetails(brand);
+            BrandDetails details = MappingUtils.getBrandDetails(brand);
             brandDetailsList.add(details);
         }
         return brandDetailsList;
@@ -49,7 +50,7 @@ public class BrandServiceImpl implements BrandService {
        Brand brand = new Brand();
        brand.setName(request.getName());
        brand = brandRepository.save(brand);
-       return getDetails(brand);
+       return MappingUtils.getBrandDetails(brand);
     }
 
     @Override
@@ -63,7 +64,7 @@ public class BrandServiceImpl implements BrandService {
         }
         brand.setName(request.getName());
         brand = brandRepository.save(brand);
-        return getDetails(brand);
+        return MappingUtils.getBrandDetails(brand);
     }
 
     @Override
@@ -75,10 +76,5 @@ public class BrandServiceImpl implements BrandService {
         brandRepository.delete(brand);
     }
 
-    private BrandDetails getDetails(Brand brand){
-        BrandDetails details = new BrandDetails();
-        details.setId(brand.getId());
-        details.setName(brand.getName());
-        return details;
-    }
+
 }
