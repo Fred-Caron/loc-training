@@ -47,9 +47,6 @@ public class LocationServiceImpl implements LocationService {
 
     @Override
     public LocationDetails create(LocationCreateRequest request) {
-        if (request.getAskingDate() == null) {
-            throw new BadRequestException("Asking date should not be empty");
-        }
         if (!StringUtils.hasText(request.getReason())) {
             throw new BadRequestException("Reason should not be empty");
         }
@@ -59,34 +56,13 @@ public class LocationServiceImpl implements LocationService {
         if (request.getPrevisionnalEndDate() == null) {
             throw new BadRequestException("Previsionnal ending date should not be empty");
         }
-        if (request.getExtentionDate() == null) {
-            throw new BadRequestException("Extention date should not be empty");
-        }
-        if (request.getExtendionDateValidation() == null) {
-            throw new BadRequestException("Extention date validation should not be empty");
-        }
-        if (request.getExtensionDuration() == null) {
-            throw new BadRequestException("Extention duration should not be empty");
-        }
-        if (request.getDecisionDate() == null) {
-            throw new BadRequestException("Decision date should not be empty");
-        }
-        if (!StringUtils.hasText(request.getDecision())) {
-            throw new BadRequestException("Decision should not be empty");
-        }
 
         User user = getUser(request.getUserId());
 
         Location location = new Location();
-        location.setAskingDate(request.getAskingDate());
         location.setReason(request.getReason());
         location.setPrevisionnalStartingDate(request.getPrevisionnalStartingDate());
         location.setPrevisionnalEndDate(request.getPrevisionnalEndDate());
-        location.setExtentionDate(request.getExtentionDate());
-        location.setExtentionDateValidation(request.getExtendionDateValidation());
-        location.setExtensionDuration(request.getExtensionDuration());
-        location.setDecision(request.getDecision());
-        location.setDecisionDate(request.getDecisionDate());
         location.setUser(user);
         location = locationRepository.save(location);
         return MappingUtils.getLocationDetails(location);
@@ -98,46 +74,22 @@ public class LocationServiceImpl implements LocationService {
         if(location == null){
             throw new NotFoundException();
         }
-        if (!StringUtils.hasText(String.valueOf(request.getAskingDate()))) {
-            throw new BadRequestException("Asking date should not be empty");
-        }
+
         if (!StringUtils.hasText(request.getReason())) {
             throw new BadRequestException("Reason should not be empty");
         }
-        if (!StringUtils.hasText(String.valueOf(request.getPrevisionnalStartingDate()))) {
+        if (request.getPrevisionnalStartingDate() == null) {
             throw new BadRequestException("Previsionnal starting date should not be empty");
         }
-        if (!StringUtils.hasText(String.valueOf(request.getPrevisionnalEndDate()))) {
+        if (request.getPrevisionnalEndDate() == null) {
             throw new BadRequestException("Previsionnal ending date should not be empty");
         }
-        if (!StringUtils.hasText(String.valueOf(request.getExtentionDate()))) {
-            throw new BadRequestException("Extention date should not be empty");
-        }
-        if (!StringUtils.hasText(String.valueOf(request.getExtendionDateValidation()))) {
-            throw new BadRequestException("Extention date validation should not be empty");
-        }
-        if (!StringUtils.hasText(String.valueOf(request.getExtensionDuration()))) {
-            throw new BadRequestException("Extention duration should not be empty");
-        }
-        if (!StringUtils.hasText(String.valueOf(request.getDecisionDate()))) {
-            throw new BadRequestException("Decision date should not be empty");
-        }
-        if (!StringUtils.hasText(request.getDecision())) {
-            throw new BadRequestException("Decision should not be empty");
-        }
 
-        User user = getUser(request.getUserId());
-
-        location.setAskingDate(request.getAskingDate());
         location.setReason(request.getReason());
         location.setPrevisionnalStartingDate(request.getPrevisionnalStartingDate());
         location.setPrevisionnalEndDate(request.getPrevisionnalEndDate());
-        location.setExtentionDate(request.getExtentionDate());
-        location.setExtentionDateValidation(request.getExtendionDateValidation());
-        location.setExtensionDuration(request.getExtensionDuration());
-        location.setDecision(request.getDecision());
-        location.setDecisionDate(request.getDecisionDate());
-        location.setUser(user);
+        location.setExtensionDate(request.getExtensionDate());
+
         location = locationRepository.save(location);
         return MappingUtils.getLocationDetails(location);
     }

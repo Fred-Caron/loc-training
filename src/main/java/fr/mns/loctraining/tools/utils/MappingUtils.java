@@ -17,6 +17,8 @@ import fr.mns.loctraining.vo.user.user.UserDetails;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 
+import java.util.concurrent.TimeUnit;
+
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public final class MappingUtils {
 
@@ -32,16 +34,19 @@ public final class MappingUtils {
     public static LocationDetails getLocationDetails(Location location) {
         LocationDetails details = new LocationDetails();
         details.setId(location.getId());
-        details.setAskingDate(location.getAskingDate());
+        details.setCreationDate(location.getCreationDate());
         details.setReason(location.getReason());
         details.setPrevisionnalStartingDate(location.getPrevisionnalStartingDate());
         details.setPrevisionnalEndDate(location.getPrevisionnalEndDate());
-        details.setExtentionDate(location.getExtentionDate());
-        details.setExtendionDateValidation(location.getExtentionDateValidation());
-        details.setExtensionDuration(location.getExtensionDuration());
-        details.setDecision(location.getDecision());
+        details.setExtensionDate(location.getExtensionDate());
+        details.setExtensionValidationDate(location.getExtensionValidationDate());
+        details.setStatus(location.getStatus());
         details.setDecisionDate(location.getDecisionDate());
         details.setUser(getUserDetails(location.getUser()));
+        if(location.getExtensionDate() != null){
+            long diff = TimeUnit.DAYS.toDays(location.getExtensionDate().getTime()-location.getPrevisionnalEndDate().getTime());
+            details.setExtensionDuration(Math.toIntExact(diff));
+        }
         return details;
     }
 

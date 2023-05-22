@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.Date;
+
 @Entity
 @Getter
 @Setter
@@ -13,12 +15,14 @@ public class MaterialState {
 
     @ManyToOne
     @MapsId("materielId")
-    @JoinColumn(name = "material_id")
+    @JoinColumn(name = "materialId")
     private Material material;
 
     @ManyToOne
     @MapsId("stateId")
-    @JoinColumn(name = "state_id")
+    @JoinColumn(name = "stateId")
     private State state;
+
+    private Date date;
 
 }

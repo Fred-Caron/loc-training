@@ -19,9 +19,11 @@ public class LocationMaterial {
     private LocationMaterialKey id;
 
     @ManyToOne
-    // Permet de préciser que cette relation fait partie de la clé composite
+    // Permet de préciser que cette relation fait partie de la clé composite et donc
+    // doit prendre le même nom que dans la clé composite de LocationMaterialKey
     @MapsId("locationId")
-    @JoinColumn(name = "location_id")
+    //join column traditionnel qui va prendre le nom de la colone en bdd
+    @JoinColumn(name = "locationId")
     private Location location;
 
     @ManyToOne

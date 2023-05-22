@@ -7,6 +7,7 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.data.annotation.CreatedDate;
 
 import java.util.Date;
 
@@ -14,15 +15,17 @@ import java.util.Date;
 @Getter
 @Setter
 public class Location extends BaseEntity {
-    private Date askingDate;
+
     private String reason;
     private Date previsionnalStartingDate;
     private Date previsionnalEndDate;
-    private Date extentionDate;
-    private Date extentionDateValidation;
-    private Date extensionDuration;
-    private String decision;
+    private Date extensionDate;
+    private Date extensionValidationDate;
+    private LocationStatus status;
     private Date decisionDate;
+
+    @CreatedDate
+    private Date creationDate;
 
     @ManyToOne
     @JoinColumn(name = "userId")

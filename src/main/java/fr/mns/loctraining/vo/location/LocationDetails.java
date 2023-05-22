@@ -1,5 +1,6 @@
 package fr.mns.loctraining.vo.location;
 
+import fr.mns.loctraining.domain.model.location.LocationStatus;
 import fr.mns.loctraining.domain.model.user.User;
 import fr.mns.loctraining.vo.user.user.UserDetails;
 import jakarta.persistence.JoinColumn;
@@ -13,14 +14,14 @@ import java.util.Date;
 @Setter
 public class LocationDetails {
     private int id;
-    private Date askingDate;
+    private Date creationDate;
     private String reason;
     private Date previsionnalStartingDate;
     private Date previsionnalEndDate;
-    private Date extentionDate;
-    private Date extendionDateValidation;
-    private Date extensionDuration;
-    private String decision;
+    private Date extensionDate;
+    private Date extensionValidationDate;
+    private Integer extensionDuration;
+    private LocationStatus status;
     private Date decisionDate;
 
     private UserDetails user;

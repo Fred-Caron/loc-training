@@ -11,15 +11,8 @@ import java.util.Date;
 @Getter
 @Setter
 public class LocationCreateRequest {
-    private Date askingDate;
     private String reason;
     private Date previsionnalStartingDate;
     private Date previsionnalEndDate;
-    private Date extentionDate;
-    private Date extendionDateValidation;
-    private Date extensionDuration;
-    private String decision;
-    private Date decisionDate;
-
     private Integer userId;
 }
