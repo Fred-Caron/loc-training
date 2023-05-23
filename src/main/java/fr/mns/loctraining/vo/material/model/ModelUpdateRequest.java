@@ -7,5 +7,6 @@ import lombok.Setter;
 @Getter
 @Setter
 public class ModelUpdateRequest {
+    private String name;
     private Brand brand;
 }

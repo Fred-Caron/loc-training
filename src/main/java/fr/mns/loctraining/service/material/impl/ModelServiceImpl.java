@@ -47,11 +47,16 @@ public class ModelServiceImpl implements ModelService {
     // ici ça ne veut pas prendre request.getName() tout seul alors que ça extends de NamedEntity
     @Override
     public ModelDetails create(ModelCreateRequest request) {
+        if(!StringUtils.hasText(request.getName())){
+            throw new BadRequestException("Name should not be empty");
+        }
         if(!StringUtils.hasText(request.getBrand().getName())){
             throw new BadRequestException("Name should not be empty");
         }
+
         Model model = new Model();
-        model.setName(request.getBrand().getName());
+        model.setName(request.getName());
+        model.setBrand(request.getBrand());
         model = modelRepository.save(model);
         return MappingUtils.getModelDetails(model);
     }

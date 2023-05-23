@@ -8,5 +8,7 @@ import lombok.Setter;
 @Setter
 public class ModelDetails {
     private int id;
+
+    private String name;
     private Brand brand;
 }

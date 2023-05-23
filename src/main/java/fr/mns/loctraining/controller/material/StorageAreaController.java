@@ -22,6 +22,7 @@ import java.util.List;
 public class StorageAreaController {
     private final StorageAreaService storageAreaService;
 
+    @GetMapping("{id}")
     public StorageAreaDetails getDetails(@PathVariable Integer id) {
         return storageAreaService.getDetails(id);
     }
