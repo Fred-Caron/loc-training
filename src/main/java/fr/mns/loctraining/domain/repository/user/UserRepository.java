@@ -7,7 +7,7 @@ public interface UserRepository extends BaseRepository<User> {
     
     User findFirstByEmail(String email);
 
-    User findFirstByEmailLikeOrFirstNameLike(String email, String firstname);
+    User findFirstByEmailLikeOrFirstnameLike(String email, String firstname);
 
-    User findFirstByEmailAndFirstNameAndLastName(String email, String firstName, String lastName);
+    User findFirstByEmailAndFirstnameAndLastname(String email, String firstname, String lastname);
 }
