@@ -1,7 +1,10 @@
 package fr.mns.loctraining.service.material.impl;
 
+import fr.mns.loctraining.domain.model.material.Brand;
+import fr.mns.loctraining.domain.model.material.Documentation;
 import fr.mns.loctraining.domain.model.material.Model;
 import fr.mns.loctraining.domain.model.user.Status;
+import fr.mns.loctraining.domain.repository.material.BrandRepository;
 import fr.mns.loctraining.domain.repository.material.ModelRepository;
 
 import fr.mns.loctraining.service.material.ModelService;
@@ -23,6 +26,8 @@ import java.util.Map;
 @AllArgsConstructor
 public class ModelServiceImpl implements ModelService {
     private final ModelRepository modelRepository;
+
+    private final BrandRepository brandRepository;
 
     @Override
     public ModelDetails getDetails(Integer id) {
@@ -50,13 +55,12 @@ public class ModelServiceImpl implements ModelService {
         if(!StringUtils.hasText(request.getName())){
             throw new BadRequestException("Name should not be empty");
         }
-        if(!StringUtils.hasText(request.getBrand().getName())){
-            throw new BadRequestException("Name should not be empty");
-        }
+
+        Brand brand = getBrand(request.getBrandId());
 
         Model model = new Model();
         model.setName(request.getName());
-        model.setBrand(request.getBrand());
+        model.setBrand(brand);
         model = modelRepository.save(model);
         return MappingUtils.getModelDetails(model);
     }
@@ -67,10 +71,10 @@ public class ModelServiceImpl implements ModelService {
         if(model == null){
             throw new NotFoundException();
         }
-        if(!StringUtils.hasText(request.getBrand().getName())){
+        if(!StringUtils.hasText(request.getName())){
             throw new BadRequestException("Name should not be empty");
         }
-        model.setName(request.getBrand().getName());
+        model.setName(request.getName());
         model = modelRepository.save(model);
         return MappingUtils.getModelDetails(model);
     }
@@ -89,5 +93,9 @@ public class ModelServiceImpl implements ModelService {
             throw new BadRequestException("Incorrect brand");
         }
         return model;
+    }
+
+    private Brand getBrand(Integer brandId){
+        return brandRepository.findByIdWithException(brandId, "brand");
     }
 }

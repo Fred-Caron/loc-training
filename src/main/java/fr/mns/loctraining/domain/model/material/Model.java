@@ -13,7 +13,6 @@ import lombok.Setter;
 
 public class Model extends NamedEntity {
 
-
     @ManyToOne
     @JoinColumn(name = "brandId" )
     private Brand brand;

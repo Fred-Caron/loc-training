@@ -67,7 +67,7 @@ public final class MappingUtils {
     public static ModelDetails getModelDetails(Model model) {
         ModelDetails details = new ModelDetails();
         details.setId(model.getId());
-        details.setBrand(model.getBrand());
+        details.setBrand(getBrandDetails(model.getBrand()));
         return details;
     }
 
