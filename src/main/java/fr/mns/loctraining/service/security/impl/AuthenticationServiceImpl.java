@@ -19,10 +19,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 @AllArgsConstructor
 public class AuthenticationServiceImpl implements AuthenticationService {
 
-    AuthenticationManager authenticationManager;
-    UserRepository userRepository;
-    PasswordEncoder passwordEncoder;
-    JwtUtils jwtUtils;
+    private final AuthenticationManager authenticationManager;
+    private final UserRepository userRepository;
+    private final PasswordEncoder passwordEncoder;
+    private final JwtUtils jwtUtils;
 
     CustomUserDetailService customUserDetailService;
 
