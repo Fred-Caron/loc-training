@@ -77,6 +77,7 @@ public class UserServiceImpl implements UserService {
         user.setEmail(request.getEmail());
         user.setLogin(request.getLogin());
         user.setGender(request.getGender());
+        //TODO on doit mettre le hash du password plutôt que le password en clair
         user.setPassword(request.getPassword());
         user.setPhone(request.getPhone());
         user.setAffiliation(request.getAffiliation());

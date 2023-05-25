@@ -1,16 +1,15 @@
 package fr.mns.loctraining.service.security.impl;
 
-import fr.mns.loctraining.domain.repository.user.UserRepository;
 import fr.mns.loctraining.security.CustomUserDetailService;
 import fr.mns.loctraining.security.CustomUserDetails;
 import fr.mns.loctraining.security.JwtUtils;
 import fr.mns.loctraining.service.security.AuthenticationService;
 import fr.mns.loctraining.vo.security.LoginRequest;
+import fr.mns.loctraining.vo.user.user.UserCreateRequest;
 import lombok.AllArgsConstructor;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -19,8 +18,6 @@ public class AuthenticationServiceImpl implements AuthenticationService {
 
     private final AuthenticationManager authenticationManager;
     private final CustomUserDetailService customUserDetailService;
-    private final UserRepository userRepository;
-    private final PasswordEncoder passwordEncoder;
 
     @Override
     public String login(LoginRequest request) {
@@ -35,6 +32,14 @@ public class AuthenticationServiceImpl implements AuthenticationService {
         }
         CustomUserDetails customUserDetail = (CustomUserDetails) customUserDetailService.loadUserByUsername(request.getUsername());
         return JwtUtils.generateJwt(customUserDetail);
+    }
+
+    @Override
+    public boolean registration(UserCreateRequest request) {
+        // 1. Faire appel au service UserService > create
+        // 2. Si tout s'est bien passé (on reçoit bien un UserDetails) alors on retourne true
+        // 3. Sinon on retourne false
+        return true;
     }
 
 }

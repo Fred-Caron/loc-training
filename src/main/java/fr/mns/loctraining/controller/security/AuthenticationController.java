@@ -2,6 +2,7 @@ package fr.mns.loctraining.controller.security;
 
 import fr.mns.loctraining.service.security.AuthenticationService;
 import fr.mns.loctraining.vo.security.LoginRequest;
+import fr.mns.loctraining.vo.user.user.UserCreateRequest;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -17,5 +18,10 @@ public class AuthenticationController {
     @PostMapping("login")
     public String login(@RequestBody LoginRequest request) {
         return authenticationService.login(request);
+    }
+
+    @PostMapping("registration")
+    public boolean login(@RequestBody UserCreateRequest request) {
+        return authenticationService.registration(request);
     }
 }
