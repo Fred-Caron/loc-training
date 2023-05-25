@@ -1,8 +1,8 @@
 package fr.mns.loctraining.service.security;
 
-import fr.mns.loctraining.domain.model.user.User;
+import fr.mns.loctraining.vo.security.LoginRequest;
 
 public interface AuthenticationService {
-    String connection(User user);
+    String login(LoginRequest request);
 
 }

@@ -1,13 +1,9 @@
 package fr.mns.loctraining.controller.security;
 
-import fr.mns.loctraining.domain.model.user.User;
-import fr.mns.loctraining.domain.repository.user.UserRepository;
-import fr.mns.loctraining.security.CustomUserDetailService;
-import fr.mns.loctraining.security.CustomUserDetails;
-import fr.mns.loctraining.security.JwtUtils;
+import fr.mns.loctraining.service.security.AuthenticationService;
+import fr.mns.loctraining.vo.security.LoginRequest;
 import lombok.AllArgsConstructor;
-import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -16,15 +12,10 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping(value = "authentication")
 @AllArgsConstructor
 public class AuthenticationController {
-    AuthenticationManager authenticationManager;
-    UserRepository userRepository;
-    PasswordEncoder passwordEncoder;
-    JwtUtils jwtUtils;
-    CustomUserDetailService customUserDetailService;
+    private final AuthenticationService authenticationService;
 
-    CustomUserDetails customUserDetails;
-
-    public String connection(@RequestBody User user) {
-        return JwtUtils.generateJwt(customUserDetails);
+    @PostMapping("login")
+    public String login(@RequestBody LoginRequest request) {
+        return authenticationService.login(request);
     }
 }
