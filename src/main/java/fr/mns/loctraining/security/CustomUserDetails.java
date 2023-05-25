@@ -18,7 +18,7 @@ import java.util.Collections;
 public class CustomUserDetails implements UserDetails {
 
     // Ici c'est notre User de DB qui contient toutes les données nécessaires
-    // UserDetails est Serializable et on ne veut pas sérializé ce champ donc on ajoute le mot clé transient
+    // UserDetails est Serializable (est mémorisé sur la JVM) et on ne veut pas sérializé ce champ donc on ajoute le mot clé transient
     private final transient User user;
 
     // On remplit ensuite les méthodes provenant de UserDetails avec les infos que l'on peut avoir de notre user

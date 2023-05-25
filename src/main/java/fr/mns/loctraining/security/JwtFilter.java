@@ -30,11 +30,14 @@ public class JwtFilter extends OncePerRequestFilter {
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
             throws ServletException, IOException {
         String authorizationHeader = request.getHeader(HttpHeaders.AUTHORIZATION);
+        //si le if n'est pas validé alors on passe au voisin sinon on continue le filtre
         if (!StringUtils.hasText(authorizationHeader) || !authorizationHeader.startsWith("Bearer ")) {
             filterChain.doFilter(request, response);
             return;
         }
         String token = authorizationHeader.split(" ")[1];
+
+        // si le token n'est pas valide alors on passe au filtre suivant
         if (!validate(token)) {
             filterChain.doFilter(request, response);
             return;

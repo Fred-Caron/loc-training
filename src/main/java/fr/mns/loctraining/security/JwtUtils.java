@@ -15,12 +15,12 @@ public final class JwtUtils {
 
     private static final String SIGNATURE_KEY = "ThisIsMySignatureKey";
 
+    //permet de générer le java web token
     public static String generateJwt(CustomUserDetails userDetails) {
         Map<String, Object> data = new HashMap<>();
-        data.put("firstname", userDetails.getUser().getFirstname());
-        data.put("lastname", userDetails.getUser().getLastname());
-        data.put("status", userDetails.getUser().getStatus().getName());
+        data.put("user", userDetails.getUser());
 
+        //on utilise la librairie pour obtenir les infos suivantes
         return Jwts.builder()
                 .setClaims(data)
                 .setSubject(userDetails.getUsername())
@@ -36,6 +36,7 @@ public final class JwtUtils {
         return expirationDate;
     }
 
+    //parser : parser quelque chose = le lire // on a de la donnnée brut, qu'on va lire et qu'on va compacter en le parsant
     public static Claims getData(String token) {
         return Jwts.parser()
                 .setSigningKey(SIGNATURE_KEY)
