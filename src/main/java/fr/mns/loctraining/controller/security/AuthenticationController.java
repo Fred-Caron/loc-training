@@ -21,7 +21,7 @@ public class AuthenticationController {
     }
 
     @PostMapping("registration")
-    public boolean login(@RequestBody UserCreateRequest request) {
+    public boolean registration(@RequestBody UserCreateRequest request) {
         return authenticationService.registration(request);
     }
 }

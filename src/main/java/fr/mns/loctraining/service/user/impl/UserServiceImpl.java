@@ -12,6 +12,7 @@ import fr.mns.loctraining.vo.user.user.UserCreateRequest;
 import fr.mns.loctraining.vo.user.user.UserDetails;
 import fr.mns.loctraining.vo.user.user.UserUpdateRequest;
 import lombok.AllArgsConstructor;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
@@ -24,6 +25,8 @@ public class UserServiceImpl implements UserService {
 
     private final UserRepository userRepository;
     private final StatusRepository statusRepository;
+
+    private final PasswordEncoder passwordEncoder;
 
     @Override
     public UserDetails getDetails(Integer id) {
@@ -78,7 +81,8 @@ public class UserServiceImpl implements UserService {
         user.setLogin(request.getLogin());
         user.setGender(request.getGender());
         //TODO on doit mettre le hash du password plutôt que le password en clair
-        user.setPassword(request.getPassword());
+        String hashPassword = passwordEncoder.encode(user.getPassword());
+        user.setPassword(hashPassword);
         user.setPhone(request.getPhone());
         user.setAffiliation(request.getAffiliation());
         // On set le status
@@ -122,7 +126,8 @@ public class UserServiceImpl implements UserService {
         user.setEmail(request.getEmail());
         user.setLogin(request.getLogin());
         user.setGender(request.getGender());
-        user.setPassword(request.getPassword());
+        String hashPassword = passwordEncoder.encode(user.getPassword());
+        user.setPassword(hashPassword);
         user.setPhone(request.getPhone());
         user.setAffiliation(request.getAffiliation());
         user.setStatus(status);
