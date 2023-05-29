@@ -80,8 +80,7 @@ public class UserServiceImpl implements UserService {
         user.setEmail(request.getEmail());
         user.setLogin(request.getLogin());
         user.setGender(request.getGender());
-        //TODO on doit mettre le hash du password plutôt que le password en clair
-        String hashPassword = passwordEncoder.encode(user.getPassword());
+        String hashPassword = passwordEncoder.encode(request.getPassword());
         user.setPassword(hashPassword);
         user.setPhone(request.getPhone());
         user.setAffiliation(request.getAffiliation());
@@ -126,7 +125,7 @@ public class UserServiceImpl implements UserService {
         user.setEmail(request.getEmail());
         user.setLogin(request.getLogin());
         user.setGender(request.getGender());
-        String hashPassword = passwordEncoder.encode(user.getPassword());
+        String hashPassword = passwordEncoder.encode(request.getPassword());
         user.setPassword(hashPassword);
         user.setPhone(request.getPhone());
         user.setAffiliation(request.getAffiliation());
