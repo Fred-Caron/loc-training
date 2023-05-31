@@ -6,6 +6,7 @@ import io.jsonwebtoken.SignatureAlgorithm;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 
+import java.time.ZonedDateTime;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -25,14 +26,14 @@ public final class JwtUtils {
                 .setClaims(data)
                 .setSubject(userDetails.getUsername())
                 .setIssuedAt(new Date())
-                .setExpiration(getExpirationDate())
+                .setExpiration(Date.from(ZonedDateTime.now().plusMinutes(30).toInstant()))
                 .signWith(SignatureAlgorithm.HS256, SIGNATURE_KEY)
                 .compact();
     }
 
     private static Date getExpirationDate() {
         Date expirationDate = new Date();
-        expirationDate.setTime(expirationDate.getTime() + 3600 * 1000);
+        expirationDate.setTime(expirationDate.getTime() + 10);
         return expirationDate;
     }
 

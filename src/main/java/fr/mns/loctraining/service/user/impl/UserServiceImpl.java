@@ -102,9 +102,6 @@ public class UserServiceImpl implements UserService {
         if (!StringUtils.hasText(request.getEmail())) {
             throw new BadRequestException("Email should not be empty");
         }
-        if (!StringUtils.hasText(request.getPassword())) {
-            throw new BadRequestException("Password should not be empty");
-        }
         if (!StringUtils.hasText(request.getLogin())) {
             throw new BadRequestException("Login should not be empty");
         }
@@ -125,8 +122,10 @@ public class UserServiceImpl implements UserService {
         user.setEmail(request.getEmail());
         user.setLogin(request.getLogin());
         user.setGender(request.getGender());
-        String hashPassword = passwordEncoder.encode(request.getPassword());
-        user.setPassword(hashPassword);
+        if (StringUtils.hasText(request.getPassword())) {
+            String hashPassword = passwordEncoder.encode(request.getPassword());
+            user.setPassword(hashPassword);
+        }
         user.setPhone(request.getPhone());
         user.setAffiliation(request.getAffiliation());
         user.setStatus(status);
