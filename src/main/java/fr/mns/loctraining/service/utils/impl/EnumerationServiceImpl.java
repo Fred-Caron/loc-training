@@ -1,0 +1,25 @@
+package fr.mns.loctraining.service.utils.impl;
+
+import fr.mns.loctraining.domain.model.user.UserGender;
+import fr.mns.loctraining.service.utils.EnumerationService;
+import fr.mns.loctraining.vo.utils.EnumerationDetails;
+import org.springframework.stereotype.Service;
+
+import java.util.ArrayList;
+import java.util.List;
+
+@Service
+public class EnumerationServiceImpl implements EnumerationService {
+
+    @Override
+    public List<EnumerationDetails> getGenders() {
+        List<EnumerationDetails> list = new ArrayList<>();
+        for (UserGender value : UserGender.values()) {
+            EnumerationDetails details = new EnumerationDetails();
+            details.setValue(value.toString());
+            details.setLabel(value.getName());
+            list.add(details);
+        }
+        return list;
+    }
+}

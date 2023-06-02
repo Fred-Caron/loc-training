@@ -62,8 +62,8 @@ public class UserServiceImpl implements UserService {
         if (!StringUtils.hasText(request.getLogin())) {
             throw new BadRequestException("Login should not be empty");
         }
-        if (!StringUtils.hasText(request.getGender())) {
-            throw new BadRequestException("Gender should not be empty");
+        if (request.getGender() != null) {
+            throw new BadRequestException("Gender should not be null");
         }
         if (!StringUtils.hasText(request.getAffiliation())) {
             throw new BadRequestException("Affiliation should not be empty");
@@ -105,8 +105,8 @@ public class UserServiceImpl implements UserService {
         if (!StringUtils.hasText(request.getLogin())) {
             throw new BadRequestException("Login should not be empty");
         }
-        if (!StringUtils.hasText(request.getGender())) {
-            throw new BadRequestException("Gender should not be empty");
+        if (request.getGender() != null) {
+            throw new BadRequestException("Gender should not be null");
         }
         if (!StringUtils.hasText(request.getAffiliation())) {
             throw new BadRequestException("Affiliation should not be empty");

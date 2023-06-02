@@ -2,15 +2,10 @@ package fr.mns.loctraining.domain.model.user;
 
 import fr.mns.loctraining.domain.model.common.BaseEntity;
 import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import lombok.Getter;
 import lombok.Setter;
-
-import java.io.File;
 
 @Entity
 @Getter
@@ -22,7 +17,7 @@ public class User extends BaseEntity {
     private String email;
     private String password;
     private String login;
-    private String gender;
+    private UserGender gender;
     private String phone;
     private String affiliation;
 
