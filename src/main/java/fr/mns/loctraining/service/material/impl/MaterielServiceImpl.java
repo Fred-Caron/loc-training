@@ -1,11 +1,16 @@
 package fr.mns.loctraining.service.material.impl;
 
-import fr.mns.loctraining.domain.model.common.BaseEntity;
-import fr.mns.loctraining.domain.model.material.*;
-import fr.mns.loctraining.domain.repository.common.BaseRepository;
-import fr.mns.loctraining.domain.repository.material.*;
-
-import fr.mns.loctraining.service.material.CategoryService;
+import fr.mns.loctraining.domain.model.material.Category;
+import fr.mns.loctraining.domain.model.material.Documentation;
+import fr.mns.loctraining.domain.model.material.Material;
+import fr.mns.loctraining.domain.model.material.Model;
+import fr.mns.loctraining.domain.model.material.StorageArea;
+import fr.mns.loctraining.domain.repository.material.BrandRepository;
+import fr.mns.loctraining.domain.repository.material.CategoryRepository;
+import fr.mns.loctraining.domain.repository.material.DocumentationRepository;
+import fr.mns.loctraining.domain.repository.material.MaterialRepository;
+import fr.mns.loctraining.domain.repository.material.ModelRepository;
+import fr.mns.loctraining.domain.repository.material.StorageAreaRepository;
 import fr.mns.loctraining.service.material.MaterialService;
 import fr.mns.loctraining.tools.exception.BadRequestException;
 import fr.mns.loctraining.tools.exception.NotFoundException;
@@ -17,7 +22,6 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
-import javax.print.Doc;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -34,7 +38,7 @@ public class MaterielServiceImpl implements MaterialService {
     @Override
     public MaterialDetails getDetails(Integer id) {
         Material material = materialRepository.findByIdNullSafe(id);
-        if(material == null){
+        if (material == null) {
             throw new NotFoundException();
         }
         return MappingUtils.getMaterialDetails(material);
@@ -53,10 +57,10 @@ public class MaterielServiceImpl implements MaterialService {
 
     @Override
     public MaterialDetails create(MaterialCreateRequest request) {
-        if(request.getRegistrationNumber() == null){
+        if (request.getRegistrationNumber() == null) {
             throw new BadRequestException("Registration number should not be empty");
         }
-        Category category = getCategory(request.getCategoryId());
+        Category category = getCategory(request.getCategoryId(), request.getCategory());
         Documentation documentation = getDocumentation(request.getDocumentationId());
         Model model = getModel(request.getModelId());
         StorageArea storageArea = getStorageArea(request.getStorageAreaId());
@@ -74,10 +78,10 @@ public class MaterielServiceImpl implements MaterialService {
     @Override
     public MaterialDetails update(Integer id, MaterialUpdateRequest request) {
         Material material = materialRepository.findByIdNullSafe(id);
-        if(request.getRegistrationNumber() == null){
+        if (request.getRegistrationNumber() == null) {
             throw new BadRequestException("Registration number should not be empty");
         }
-        Category category = getCategory(request.getCategoryId());
+        Category category = getCategory(request.getCategoryId(), null);
         Documentation documentation = getDocumentation(request.getDocumentationId());
         Model model = getModel(request.getModelId());
         StorageArea storageArea = getStorageArea(request.getStorageAreaId());
@@ -94,27 +98,37 @@ public class MaterielServiceImpl implements MaterialService {
     @Override
     public void delete(Integer id) {
         Material material = materialRepository.findByIdNullSafe(id);
-        if(material == null){
+        if (material == null) {
             throw new NotFoundException();
         }
         materialRepository.delete(material);
     }
 
-    private StorageArea getStorageArea(Integer storageAreaId){
+    private StorageArea getStorageArea(Integer storageAreaId) {
         return storageAreaRepository.findByIdWithException(storageAreaId, "storage area");
     }
 
-    private Model getModel(Integer modelId){
+    private Model getModel(Integer modelId) {
         return modelRepository.findByIdWithException(modelId, "model");
     }
-    private Category getCategory(Integer categoryId){
-        return categoryRepository.findByIdWithException(categoryId, "category");
+
+    private Category getCategory(Integer categoryId, String category) {
+        if (categoryId != null) {
+            return categoryRepository.findByIdWithException(categoryId, "category");
+        }
+
+        if (!StringUtils.hasText(category)) {
+            throw new BadRequestException("Category cannot be null");
+        }
+
+        Category newCategory = new Category();
+        newCategory.setName(category);
+
+        return categoryRepository.save(newCategory);
     }
 
-    private Documentation getDocumentation(Integer documentationId){
+    private Documentation getDocumentation(Integer documentationId) {
         return documentationRepository.findByIdWithException(documentationId, "documentation");
     }
-
-
 
 }
