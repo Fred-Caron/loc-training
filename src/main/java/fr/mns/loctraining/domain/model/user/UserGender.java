@@ -8,8 +8,7 @@ import lombok.Getter;
 public enum UserGender {
 
     MALE("Male"),
-    FEMALE("Female"),
-    PENGUIN("Penguin");
+    FEMALE("Female");
 
     private final String name;
 }
