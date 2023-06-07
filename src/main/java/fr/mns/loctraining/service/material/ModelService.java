@@ -9,7 +9,7 @@ import java.util.List;
 public interface ModelService {
     ModelDetails getDetails(Integer id);
 
-    List<ModelDetails> getList();
+    List<ModelDetails> getList(Integer brandId);
 
     ModelDetails create(ModelCreateRequest request);
 

@@ -1,9 +1,7 @@
 package fr.mns.loctraining.domain.model.user;
 
 import fr.mns.loctraining.domain.model.common.BaseEntity;
-import jakarta.persistence.Entity;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -17,9 +15,11 @@ public class User extends BaseEntity {
     private String email;
     private String password;
     private String login;
+    @Enumerated(EnumType.STRING)
     private UserGender gender;
     private String phone;
-    private String affiliation;
+    @Enumerated(EnumType.STRING)
+    private UserAffiliation affiliation;
 
     // L'annotation ManyToOne indique une relation ManyToOne, ici on indique une relation ManyToOne entre User et Status
     @ManyToOne

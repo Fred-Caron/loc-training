@@ -43,8 +43,8 @@ public final class MappingUtils {
         details.setStatus(location.getStatus());
         details.setDecisionDate(location.getDecisionDate());
         details.setUser(getUserDetails(location.getUser()));
-        if(location.getExtensionDate() != null){
-            long diff = TimeUnit.DAYS.toDays(location.getExtensionDate().getTime()-location.getPrevisionnalEndDate().getTime());
+        if (location.getExtensionDate() != null) {
+            long diff = TimeUnit.DAYS.toDays(location.getExtensionDate().getTime() - location.getPrevisionnalEndDate().getTime());
             details.setExtensionDuration(Math.toIntExact(diff));
         }
         return details;
@@ -64,9 +64,11 @@ public final class MappingUtils {
         details.setStatus(getStatusDetails(user.getStatus()));
         return details;
     }
+
     public static ModelDetails getModelDetails(Model model) {
         ModelDetails details = new ModelDetails();
         details.setId(model.getId());
+        details.setName(model.getName());
         details.setBrand(getBrandDetails(model.getBrand()));
         return details;
     }
@@ -78,35 +80,35 @@ public final class MappingUtils {
         return details;
     }
 
-    public static BrandDetails getBrandDetails(Brand brand){
+    public static BrandDetails getBrandDetails(Brand brand) {
         BrandDetails details = new BrandDetails();
         details.setId(brand.getId());
         details.setName(brand.getName());
         return details;
     }
 
-    public static StorageAreaDetails getStorageAreaDetails(StorageArea storageArea){
+    public static StorageAreaDetails getStorageAreaDetails(StorageArea storageArea) {
         StorageAreaDetails details = new StorageAreaDetails();
         details.setId(storageArea.getId());
         details.setName(storageArea.getName());
         return details;
     }
 
-    public static CategoryDetails getCategoryDetails(Category category){
+    public static CategoryDetails getCategoryDetails(Category category) {
         CategoryDetails details = new CategoryDetails();
         details.setId(category.getId());
         details.setName(category.getName());
         return details;
     }
 
-    public static DocumentationDetails getDocumentationDetails(Documentation documentation){
+    public static DocumentationDetails getDocumentationDetails(Documentation documentation) {
         DocumentationDetails details = new DocumentationDetails();
         details.setId(documentation.getId());
         details.setDescription(documentation.getDescription());
         return details;
     }
 
-    public static MaterialDetails getMaterialDetails(Material material){
+    public static MaterialDetails getMaterialDetails(Material material) {
         MaterialDetails details = new MaterialDetails();
         details.setId(material.getId());
         details.setCategory(getCategoryDetails(material.getCategory()));

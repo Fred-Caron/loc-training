@@ -1,10 +1,5 @@
 package fr.mns.loctraining.vo.material.material;
 
-import fr.mns.loctraining.domain.model.material.Category;
-import fr.mns.loctraining.domain.model.material.Documentation;
-import fr.mns.loctraining.domain.model.material.Model;
-import fr.mns.loctraining.domain.model.material.StorageArea;
-import fr.mns.loctraining.vo.material.brand.BrandDetails;
 import fr.mns.loctraining.vo.material.category.CategoryDetails;
 import fr.mns.loctraining.vo.material.documentation.DocumentationDetails;
 import fr.mns.loctraining.vo.material.model.ModelDetails;
@@ -17,6 +12,7 @@ import lombok.Setter;
 public class MaterialDetails {
     private int id;
     private int registrationNumber;
+
 
     private ModelDetails model;
 

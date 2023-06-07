@@ -1,5 +1,6 @@
 package fr.mns.loctraining.vo.user.user;
 
+import fr.mns.loctraining.domain.model.user.UserAffiliation;
 import fr.mns.loctraining.domain.model.user.UserGender;
 import lombok.Getter;
 import lombok.Setter;
@@ -13,7 +14,7 @@ public class UserCreateRequest {
     private String password;
     private String login;
     private UserGender gender;
-    private String affiliation;
+    private UserAffiliation affiliation;
     private String phone;
     // Ici on ajoute l'id du status dans la request
     private Integer statusId;

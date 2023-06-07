@@ -1,12 +1,9 @@
 package fr.mns.loctraining.service.material.impl;
 
 import fr.mns.loctraining.domain.model.material.Brand;
-import fr.mns.loctraining.domain.model.material.Documentation;
 import fr.mns.loctraining.domain.model.material.Model;
-import fr.mns.loctraining.domain.model.user.Status;
 import fr.mns.loctraining.domain.repository.material.BrandRepository;
 import fr.mns.loctraining.domain.repository.material.ModelRepository;
-
 import fr.mns.loctraining.service.material.ModelService;
 import fr.mns.loctraining.tools.exception.BadRequestException;
 import fr.mns.loctraining.tools.exception.NotFoundException;
@@ -20,7 +17,6 @@ import org.springframework.util.StringUtils;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 @Service
 @AllArgsConstructor
@@ -32,15 +28,15 @@ public class ModelServiceImpl implements ModelService {
     @Override
     public ModelDetails getDetails(Integer id) {
         Model model = modelRepository.findByIdNullSafe(id);
-        if(model == null){
+        if (model == null) {
             throw new NotFoundException();
         }
         return MappingUtils.getModelDetails(model);
     }
 
     @Override
-    public List<ModelDetails> getList() {
-        List<Model> modelList = modelRepository.findAll();
+    public List<ModelDetails> getList(Integer brandId) {
+        List<Model> modelList = modelRepository.findByBrandId(brandId);
         List<ModelDetails> modelDetailsList = new ArrayList<>();
         for (Model model : modelList) {
             ModelDetails details = MappingUtils.getModelDetails(model);
@@ -52,7 +48,7 @@ public class ModelServiceImpl implements ModelService {
     // ici ça ne veut pas prendre request.getName() tout seul alors que ça extends de NamedEntity
     @Override
     public ModelDetails create(ModelCreateRequest request) {
-        if(!StringUtils.hasText(request.getName())){
+        if (!StringUtils.hasText(request.getName())) {
             throw new BadRequestException("Name should not be empty");
         }
 
@@ -68,10 +64,10 @@ public class ModelServiceImpl implements ModelService {
     @Override
     public ModelDetails update(Integer id, ModelUpdateRequest request) {
         Model model = modelRepository.findByIdNullSafe(id);
-        if(model == null){
+        if (model == null) {
             throw new NotFoundException();
         }
-        if(!StringUtils.hasText(request.getName())){
+        if (!StringUtils.hasText(request.getName())) {
             throw new BadRequestException("Name should not be empty");
         }
         model.setName(request.getName());
@@ -82,11 +78,12 @@ public class ModelServiceImpl implements ModelService {
     @Override
     public void delete(Integer id) {
         Model model = modelRepository.findByIdNullSafe(id);
-        if(model == null){
+        if (model == null) {
             throw new NotFoundException();
         }
         modelRepository.delete(model);
     }
+
     private Model getModel(Integer brandId) {
         Model model = modelRepository.findByIdNullSafe(brandId);
         if (model == null) {
@@ -95,7 +92,7 @@ public class ModelServiceImpl implements ModelService {
         return model;
     }
 
-    private Brand getBrand(Integer brandId){
+    private Brand getBrand(Integer brandId) {
         return brandRepository.findByIdWithException(brandId, "brand");
     }
 }

@@ -16,8 +16,14 @@ public class EnumerationController {
 
     private final EnumerationService service;
 
+
     @GetMapping("gender")
     public List<EnumerationDetails> getGenders() {
         return service.getGenders();
+    }
+
+    @GetMapping("affiliation")
+    public List<EnumerationDetails> getAffiliations() {
+        return service.getAffiliations();
     }
 }
