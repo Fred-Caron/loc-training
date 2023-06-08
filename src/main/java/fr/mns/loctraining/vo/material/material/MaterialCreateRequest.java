@@ -6,15 +6,21 @@ import lombok.Setter;
 @Getter
 @Setter
 public class MaterialCreateRequest {
+
     private Integer registrationNumber;
 
+    private String newBrand;
+
     private Integer modelId;
+    private String newModel;
 
     private Integer categoryId;
-    private String category;
+    private String newCategory;
 
     private Integer storageAreaId;
+    private String newStorageArea;
 
     private Integer documentationId;
+    private String newDocumentation;
 
 }

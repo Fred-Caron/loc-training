@@ -60,10 +60,11 @@ public class MaterielServiceImpl implements MaterialService {
         if (request.getRegistrationNumber() == null) {
             throw new BadRequestException("Registration number should not be empty");
         }
-        Category category = getCategory(request.getCategoryId(), request.getCategory());
-        Documentation documentation = getDocumentation(request.getDocumentationId());
-        Model model = getModel(request.getModelId());
+        Category category = getCategory(request.getCategoryId(), request.getNewCategory());
+        Documentation documentation = getDocumentation(request.getDocumentationId(), request.getNewDocumentation());
         StorageArea storageArea = getStorageArea(request.getStorageAreaId());
+        // Créer le brand avant si creation d'un nouveau brand
+        Model model = getModel(request.getModelId());
 
         Material material = new Material();
         material.setRegistrationNumber(request.getRegistrationNumber());
@@ -82,7 +83,7 @@ public class MaterielServiceImpl implements MaterialService {
             throw new BadRequestException("Registration number should not be empty");
         }
         Category category = getCategory(request.getCategoryId(), null);
-        Documentation documentation = getDocumentation(request.getDocumentationId());
+        Documentation documentation = getDocumentation(request.getDocumentationId(), null);
         Model model = getModel(request.getModelId());
         StorageArea storageArea = getStorageArea(request.getStorageAreaId());
 
@@ -112,23 +113,34 @@ public class MaterielServiceImpl implements MaterialService {
         return modelRepository.findByIdWithException(modelId, "model");
     }
 
-    private Category getCategory(Integer categoryId, String category) {
+    private Category getCategory(Integer categoryId, String categoryName) {
         if (categoryId != null) {
             return categoryRepository.findByIdWithException(categoryId, "category");
         }
 
-        if (!StringUtils.hasText(category)) {
+        if (!StringUtils.hasText(categoryName)) {
             throw new BadRequestException("Category cannot be null");
         }
 
         Category newCategory = new Category();
-        newCategory.setName(category);
+        newCategory.setName(categoryName);
 
         return categoryRepository.save(newCategory);
     }
 
-    private Documentation getDocumentation(Integer documentationId) {
-        return documentationRepository.findByIdWithException(documentationId, "documentation");
+    private Documentation getDocumentation(Integer documentationId, String description) {
+        if (documentationId != null) {
+            return documentationRepository.findByIdWithException(documentationId, "documentation");
+        }
+
+        if (!StringUtils.hasText(description)) {
+            throw new BadRequestException("Documentation cannot be null");
+        }
+
+        Documentation newDocumentation = new Documentation();
+        newDocumentation.setDescription(description);
+
+        return documentationRepository.save(newDocumentation);
     }
 
 }
