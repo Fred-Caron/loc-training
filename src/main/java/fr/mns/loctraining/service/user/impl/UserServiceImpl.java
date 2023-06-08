@@ -148,4 +148,31 @@ public class UserServiceImpl implements UserService {
     private Status getStatus(Integer statusId) {
         return statusRepository.findByIdWithException(statusId, "status");
     }
+
+   /* @Override
+    public List<UserDetails> search(String query) {
+        List<UserDetails> list = new ArrayList<>();
+        try {
+            Connection connection = null;
+            PreparedStatement statement = null;
+            ResultSet rs = null;
+
+            String strSql = "SELECT * FROM user WHERE firstname LIKE ? OR lastname LIKE ? OR login LIKE ?";
+
+            statement = connection.prepareStatement(strSql);
+            statement.setString(1, "%" + query + "%");
+            statement.setString(2, "%" + query + "%");
+            statement.setString(3, "%" + query + "%");
+
+            rs = statement.executeQuery();
+
+            while (rs.next()) {
+                list.add(new UserDetails());
+            }
+
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        return list;
+    }*/
 }

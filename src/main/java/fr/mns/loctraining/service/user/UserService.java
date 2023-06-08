@@ -16,4 +16,6 @@ public interface UserService {
     UserDetails update(Integer id, UserUpdateRequest request);
 
     void delete(Integer id);
+
+    /*UserDetails search(String query);*/
 }
