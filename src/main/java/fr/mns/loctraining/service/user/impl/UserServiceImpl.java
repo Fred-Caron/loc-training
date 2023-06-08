@@ -10,6 +10,7 @@ import fr.mns.loctraining.tools.exception.NotFoundException;
 import fr.mns.loctraining.tools.utils.MappingUtils;
 import fr.mns.loctraining.vo.user.user.UserCreateRequest;
 import fr.mns.loctraining.vo.user.user.UserDetails;
+import fr.mns.loctraining.vo.user.user.UserSearchRequest;
 import fr.mns.loctraining.vo.user.user.UserUpdateRequest;
 import lombok.AllArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -149,30 +150,14 @@ public class UserServiceImpl implements UserService {
         return statusRepository.findByIdWithException(statusId, "status");
     }
 
-   /* @Override
-    public List<UserDetails> search(String query) {
-        List<UserDetails> list = new ArrayList<>();
-        try {
-            Connection connection = null;
-            PreparedStatement statement = null;
-            ResultSet rs = null;
-
-            String strSql = "SELECT * FROM user WHERE firstname LIKE ? OR lastname LIKE ? OR login LIKE ?";
-
-            statement = connection.prepareStatement(strSql);
-            statement.setString(1, "%" + query + "%");
-            statement.setString(2, "%" + query + "%");
-            statement.setString(3, "%" + query + "%");
-
-            rs = statement.executeQuery();
-
-            while (rs.next()) {
-                list.add(new UserDetails());
-            }
-
-        } catch (SQLException e) {
-            System.out.println(e.getMessage());
+    @Override
+    public List<UserDetails> search(UserSearchRequest request) {
+        List<User> userList = userRepository.search(request);
+        List<UserDetails> userDetailsList = new ArrayList<>();
+        for (User user : userList) {
+            UserDetails details = MappingUtils.getUserDetails(user);
+            userDetailsList.add(details);
         }
-        return list;
-    }*/
+        return userDetailsList;
+    }
 }
