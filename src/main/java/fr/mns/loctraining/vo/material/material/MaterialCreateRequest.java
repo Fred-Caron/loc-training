@@ -9,6 +9,7 @@ public class MaterialCreateRequest {
 
     private Integer registrationNumber;
 
+    private Integer brandId;
     private String newBrand;
 
     private Integer modelId;

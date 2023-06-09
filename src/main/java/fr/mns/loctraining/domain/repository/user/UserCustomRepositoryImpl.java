@@ -16,7 +16,7 @@ import java.util.List;
 public class UserCustomRepositoryImpl implements UserCustomRepository {
 
     @PersistenceContext
-    protected EntityManager entityManager;
+    private EntityManager entityManager;
 
     @Override
     public List<User> search(UserSearchRequest request) {
@@ -37,6 +37,15 @@ public class UserCustomRepositoryImpl implements UserCustomRepository {
         if (request.getGender() != null) {
             predicates.add(criteriaBuilder.equal(root.get("gender"), request.getGender()));
         }
+
+        if (request.getStatusId() != null) {
+            predicates.add(criteriaBuilder.equal(root.get("status").get("id"), request.getStatusId()));
+        }
+
+        if (request.getAffiliation() != null) {
+            predicates.add(criteriaBuilder.equal(root.get("affiliation"), request.getAffiliation()));
+        }
+
         Predicate finalPredicate = criteriaBuilder.and(predicates.toArray(new Predicate[0]));
         criteriaQuery.where(finalPredicate);
 

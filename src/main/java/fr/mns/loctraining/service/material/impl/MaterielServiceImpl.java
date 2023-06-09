@@ -1,22 +1,14 @@
 package fr.mns.loctraining.service.material.impl;
 
-import fr.mns.loctraining.domain.model.material.Category;
-import fr.mns.loctraining.domain.model.material.Documentation;
-import fr.mns.loctraining.domain.model.material.Material;
-import fr.mns.loctraining.domain.model.material.Model;
-import fr.mns.loctraining.domain.model.material.StorageArea;
-import fr.mns.loctraining.domain.repository.material.BrandRepository;
-import fr.mns.loctraining.domain.repository.material.CategoryRepository;
-import fr.mns.loctraining.domain.repository.material.DocumentationRepository;
-import fr.mns.loctraining.domain.repository.material.MaterialRepository;
-import fr.mns.loctraining.domain.repository.material.ModelRepository;
-import fr.mns.loctraining.domain.repository.material.StorageAreaRepository;
+import fr.mns.loctraining.domain.model.material.*;
+import fr.mns.loctraining.domain.repository.material.*;
 import fr.mns.loctraining.service.material.MaterialService;
 import fr.mns.loctraining.tools.exception.BadRequestException;
 import fr.mns.loctraining.tools.exception.NotFoundException;
 import fr.mns.loctraining.tools.utils.MappingUtils;
 import fr.mns.loctraining.vo.material.material.MaterialCreateRequest;
 import fr.mns.loctraining.vo.material.material.MaterialDetails;
+import fr.mns.loctraining.vo.material.material.MaterialSearchRequest;
 import fr.mns.loctraining.vo.material.material.MaterialUpdateRequest;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -62,9 +54,11 @@ public class MaterielServiceImpl implements MaterialService {
         }
         Category category = getCategory(request.getCategoryId(), request.getNewCategory());
         Documentation documentation = getDocumentation(request.getDocumentationId(), request.getNewDocumentation());
-        StorageArea storageArea = getStorageArea(request.getStorageAreaId());
+        StorageArea storageArea = getStorageArea(request.getStorageAreaId(), request.getNewStorageArea());
         // Créer le brand avant si creation d'un nouveau brand
-        Model model = getModel(request.getModelId());
+
+        Brand brand = getBrand(request.getBrandId(), request.getNewBrand());
+        Model model = getModel(request.getModelId(), request.getNewModel(), brand);
 
         Material material = new Material();
         material.setRegistrationNumber(request.getRegistrationNumber());
@@ -84,8 +78,8 @@ public class MaterielServiceImpl implements MaterialService {
         }
         Category category = getCategory(request.getCategoryId(), null);
         Documentation documentation = getDocumentation(request.getDocumentationId(), null);
-        Model model = getModel(request.getModelId());
-        StorageArea storageArea = getStorageArea(request.getStorageAreaId());
+        Model model = getModel(request.getModelId(), null, null);
+        StorageArea storageArea = getStorageArea(request.getStorageAreaId(), null);
 
         material.setCategory(category);
         material.setDocumentation(documentation);
@@ -105,12 +99,43 @@ public class MaterielServiceImpl implements MaterialService {
         materialRepository.delete(material);
     }
 
-    private StorageArea getStorageArea(Integer storageAreaId) {
-        return storageAreaRepository.findByIdWithException(storageAreaId, "storage area");
+    private StorageArea getStorageArea(Integer storageAreaId, String storageAreaName) {
+        if (storageAreaId != null) {
+            return storageAreaRepository.findByIdWithException(storageAreaId, "storage area");
+        }
+        if (!StringUtils.hasText(storageAreaName)) {
+            throw new BadRequestException("Storage Area cannot be null");
+        }
+
+        StorageArea newStorageArea = new StorageArea();
+        newStorageArea.setName(storageAreaName);
+        return storageAreaRepository.save(newStorageArea);
     }
 
-    private Model getModel(Integer modelId) {
-        return modelRepository.findByIdWithException(modelId, "model");
+    private Brand getBrand(Integer brandId, String brandName) {
+        if (brandId != null) {
+            return brandRepository.findByIdWithException(brandId, "brand");
+        }
+        if (!StringUtils.hasText(brandName)) {
+            throw new BadRequestException("Brand cannot be null");
+        }
+        Brand newBrand = new Brand();
+        newBrand.setName(brandName);
+        return brandRepository.save(newBrand);
+    }
+
+    private Model getModel(Integer modelId, String modelName, Brand brand) {
+        if (modelId != null) {
+            return modelRepository.findByIdWithException(modelId, "model");
+        }
+        if (!StringUtils.hasText(modelName)) {
+            throw new BadRequestException("Model cannot be null");
+        }
+
+        Model newModel = new Model();
+        newModel.setName(modelName);
+        newModel.setBrand(brand);
+        return modelRepository.save(newModel);
     }
 
     private Category getCategory(Integer categoryId, String categoryName) {
@@ -141,6 +166,17 @@ public class MaterielServiceImpl implements MaterialService {
         newDocumentation.setDescription(description);
 
         return documentationRepository.save(newDocumentation);
+    }
+
+    @Override
+    public List<MaterialDetails> search(MaterialSearchRequest request) {
+        List<Material> materialList = materialRepository.search(request);
+        List<MaterialDetails> materialDetailsList = new ArrayList<>();
+        for (Material material : materialList) {
+            MaterialDetails details = MappingUtils.getMaterialDetails(material);
+            materialDetailsList.add(details);
+        }
+        return materialDetailsList;
     }
 
 }
