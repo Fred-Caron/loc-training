@@ -26,8 +26,8 @@ public class MaterialCustomRepositoryImpl implements MaterialCustomRepository {
 
         if (StringUtils.hasText(request.getSearch())) {
             predicates.add(criteriaBuilder.or(
-                    criteriaBuilder.like(root.get("model"), getLikeValue(request.getSearch())),
-                    criteriaBuilder.like(root.get("category"), getLikeValue(request.getSearch()))
+                    criteriaBuilder.like(root.get("model").get("name"), getLikeValue(request.getSearch())),
+                    criteriaBuilder.like(root.get("category").get("name"), getLikeValue(request.getSearch()))
             ));
         }
         if (request.getCategoryId() != null) {
