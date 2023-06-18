@@ -51,5 +51,10 @@ public class LocationController {
     public LocationDetails userValidation(@PathVariable Integer id) {
         return locationService.userValidation(id);
     }
+
+    @GetMapping("{id}/admin/validate")
+    public LocationDetails adminValidation(@PathVariable Integer id) {
+        return locationService.adminValidation(id);
+    }
 }
 
