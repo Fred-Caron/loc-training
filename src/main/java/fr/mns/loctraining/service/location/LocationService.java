@@ -17,4 +17,6 @@ public interface LocationService {
     LocationDetails update(Integer id, LocationUpdateRequest request);
 
     void delete(Integer id);
+
+    LocationDetails userValidation(Integer id);
 }

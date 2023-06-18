@@ -46,5 +46,10 @@ public class LocationController {
     public void delete(@PathVariable Integer id) {
         locationService.delete(id);
     }
+
+    @GetMapping("{id}/user/validate")
+    public LocationDetails userValidation(@PathVariable Integer id) {
+        return locationService.userValidation(id);
+    }
 }
 

@@ -104,6 +104,18 @@ public class LocationServiceImpl implements LocationService {
         locationRepository.delete(location);
     }
 
+    @Override
+    public LocationDetails userValidation(Integer id) {
+        Location location = locationRepository.findByIdNullSafe(id);
+        if (location == null) {
+            throw new NotFoundException();
+        }
+        location.setStatus(LocationStatus.PENDING);
+        location = locationRepository.save(location);
+
+        return MappingUtils.getLocationDetails(location);
+    }
+
     private User getUser(Integer userId) {
         return userRepository.findByIdWithException(userId, "user");
     }
