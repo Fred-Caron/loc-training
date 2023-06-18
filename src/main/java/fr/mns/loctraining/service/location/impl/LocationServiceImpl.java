@@ -1,7 +1,7 @@
 package fr.mns.loctraining.service.location.impl;
 
 import fr.mns.loctraining.domain.model.location.Location;
-import fr.mns.loctraining.domain.model.material.StorageArea;
+import fr.mns.loctraining.domain.model.location.LocationStatus;
 import fr.mns.loctraining.domain.model.user.User;
 import fr.mns.loctraining.domain.repository.location.LocationRepository;
 import fr.mns.loctraining.domain.repository.user.UserRepository;
@@ -28,7 +28,7 @@ public class LocationServiceImpl implements LocationService {
     @Override
     public LocationDetails getDetails(Integer id) {
         Location location = locationRepository.findByIdNullSafe(id);
-        if(location == null){
+        if (location == null) {
             throw new NotFoundException();
         }
         return MappingUtils.getLocationDetails(location);
@@ -64,6 +64,7 @@ public class LocationServiceImpl implements LocationService {
         location.setPrevisionnalStartingDate(request.getPrevisionnalStartingDate());
         location.setPrevisionnalEndDate(request.getPrevisionnalEndDate());
         location.setUser(user);
+        location.setStatus(LocationStatus.DRAFT);
         location = locationRepository.save(location);
         return MappingUtils.getLocationDetails(location);
     }
@@ -71,7 +72,7 @@ public class LocationServiceImpl implements LocationService {
     @Override
     public LocationDetails update(Integer id, LocationUpdateRequest request) {
         Location location = locationRepository.findByIdNullSafe(id);
-        if(location == null){
+        if (location == null) {
             throw new NotFoundException();
         }
 
@@ -97,7 +98,7 @@ public class LocationServiceImpl implements LocationService {
     @Override
     public void delete(Integer id) {
         Location location = locationRepository.findByIdNullSafe(id);
-        if(location == null){
+        if (location == null) {
             throw new NotFoundException();
         }
         locationRepository.delete(location);
