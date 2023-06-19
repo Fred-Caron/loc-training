@@ -21,4 +21,6 @@ public interface LocationService {
     LocationDetails userValidation(Integer id);
 
     LocationDetails adminValidation(Integer id);
+
+    LocationDetails adminRejection(Integer id);
 }
