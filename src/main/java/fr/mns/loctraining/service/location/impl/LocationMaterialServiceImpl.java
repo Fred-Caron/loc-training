@@ -75,5 +75,25 @@ public class LocationMaterialServiceImpl implements LocationMaterialService {
     @Override
     public void removeMaterial(Integer locationId, Integer materialId) {
         // Pareil que addMaterial sauf qu'on doit supprimer si le lien existe
+        Location location = locationRepository.findByIdNullSafe(locationId);
+        if (location == null) {
+            throw new NotFoundException();
+        }
+        Material material = materialRepository.findByIdNullSafe(materialId);
+        if (material == null) {
+            throw new NotFoundException();
+        }
+        LocationMaterialKey key = new LocationMaterialKey();
+        key.setLocationId(locationId);
+        key.setMaterialId(materialId);
+
+        LocationMaterial locationMaterial = locationMaterialRepository.findById(key).orElse(null);
+        if (locationMaterial == null) {
+            throw new BadRequestException("Bond between material and rental doesn't exist");
+        }
+
+        locationMaterial = new LocationMaterial();
+        locationMaterial.setId(key);
+        locationMaterialRepository.delete(locationMaterial);
     }
 }
