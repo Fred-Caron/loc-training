@@ -11,6 +11,7 @@ import fr.mns.loctraining.tools.exception.NotFoundException;
 import fr.mns.loctraining.tools.utils.MappingUtils;
 import fr.mns.loctraining.vo.location.LocationCreateRequest;
 import fr.mns.loctraining.vo.location.LocationDetails;
+import fr.mns.loctraining.vo.location.LocationSearchRequest;
 import fr.mns.loctraining.vo.location.LocationUpdateRequest;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -142,5 +143,16 @@ public class LocationServiceImpl implements LocationService {
 
     private User getUser(Integer userId) {
         return userRepository.findByIdWithException(userId, "user");
+    }
+
+    @Override
+    public List<LocationDetails> search(LocationSearchRequest request) {
+        List<Location> locationList = locationRepository.search(request);
+        List<LocationDetails> locationDetailsList = new ArrayList<>();
+        for (Location location : locationList) {
+            LocationDetails details = MappingUtils.getLocationDetails(location);
+            locationDetailsList.add(details);
+        }
+        return locationDetailsList;
     }
 }
