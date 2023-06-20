@@ -26,4 +26,9 @@ public class EnumerationController {
     public List<EnumerationDetails> getAffiliations() {
         return service.getAffiliations();
     }
+
+    @GetMapping("rentalStatus")
+    public List<EnumerationDetails> getRentalStatus() {
+        return service.getRentalStatus();
+    }
 }
