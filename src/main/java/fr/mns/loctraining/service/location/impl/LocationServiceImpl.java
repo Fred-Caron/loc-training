@@ -161,4 +161,10 @@ public class LocationServiceImpl implements LocationService {
         request.setStatus(LocationStatus.PENDING);
         return search(request);
     }
+
+    @Override
+    public List<LocationDetails> searchUserRental(Integer userId, LocationSearchRequest request) {
+        request.setUserId(userId);
+        return search(request);
+    }
 }

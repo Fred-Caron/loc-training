@@ -19,10 +19,15 @@ public class LocationCustomRepositoryImpl implements LocationCustomRepository {
 
     @Override
     public List<Location> search(LocationSearchRequest request) {
+
         CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
         CriteriaQuery<Location> criteriaQuery = criteriaBuilder.createQuery(Location.class);
         Root<Location> root = criteriaQuery.from(Location.class);
         List<Predicate> predicates = new ArrayList<>();
+
+        if (request.getUserId() != null) {
+            predicates.add(criteriaBuilder.equal(root.get("user").get("id"), request.getUserId()));
+        }
 
         if (StringUtils.hasText(request.getSearch())) {
             predicates.add(criteriaBuilder.or(

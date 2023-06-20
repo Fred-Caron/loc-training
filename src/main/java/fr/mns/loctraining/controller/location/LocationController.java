@@ -65,5 +65,10 @@ public class LocationController {
     public List<LocationDetails> searchToBeValidated(@RequestBody LocationSearchRequest request) {
         return locationService.searchToBeValidated(request);
     }
+
+    @PostMapping("/search/byUser/{id}")
+    public List<LocationDetails> searchUserRental(@PathVariable Integer userId, @RequestBody LocationSearchRequest request) {
+        return locationService.searchUserRental(userId, request);
+    }
 }
 

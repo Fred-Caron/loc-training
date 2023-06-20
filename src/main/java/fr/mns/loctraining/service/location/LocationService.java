@@ -28,4 +28,6 @@ public interface LocationService {
     List<LocationDetails> search(LocationSearchRequest request);
 
     List<LocationDetails> searchToBeValidated(LocationSearchRequest request);
+
+    List<LocationDetails> searchUserRental(Integer userId, LocationSearchRequest request);
 }

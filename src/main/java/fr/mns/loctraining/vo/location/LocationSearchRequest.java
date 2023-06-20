@@ -10,6 +10,7 @@ import java.util.Date;
 @Setter
 public class LocationSearchRequest {
 
+    private Integer userId;
     private String search;
     private LocationStatus status;
     private Date previsionnalStartingDate;
