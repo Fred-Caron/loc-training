@@ -10,4 +10,6 @@ public interface EnumerationService {
 
     List<EnumerationDetails> getAffiliations();
 
+    List<EnumerationDetails> getRentalStatus();
+
 }
