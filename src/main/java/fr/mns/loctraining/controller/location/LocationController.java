@@ -3,6 +3,7 @@ package fr.mns.loctraining.controller.location;
 import fr.mns.loctraining.service.location.LocationService;
 import fr.mns.loctraining.vo.location.LocationCreateRequest;
 import fr.mns.loctraining.vo.location.LocationDetails;
+import fr.mns.loctraining.vo.location.LocationSearchRequest;
 import fr.mns.loctraining.vo.location.LocationUpdateRequest;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -53,6 +54,11 @@ public class LocationController {
     @GetMapping("{id}/admin/rejecte")
     public LocationDetails adminRejection(@PathVariable Integer id) {
         return locationService.adminRejection(id);
+    }
+
+    @PostMapping
+    public List<LocationDetails> search(@RequestBody LocationSearchRequest request) {
+        return locationService.search(request);
     }
 }
 

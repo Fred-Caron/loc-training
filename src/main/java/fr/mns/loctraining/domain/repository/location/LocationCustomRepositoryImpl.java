@@ -25,8 +25,15 @@ public class LocationCustomRepositoryImpl implements LocationCustomRepository {
         List<Predicate> predicates = new ArrayList<>();
 
         if (StringUtils.hasText(request.getSearch())) {
-            predicates.add(criteriaBuilder.like(root.get("status"), getLikeValue(request.getSearch())
+            predicates.add(criteriaBuilder.or(
+                    criteriaBuilder.like(root.get("materials").get("material").get("name"), getLikeValue(request.getSearch())),
+                    criteriaBuilder.like(root.get("user").get("lastname"), getLikeValue(request.getSearch())),
+                    criteriaBuilder.like(root.get("user").get("firstname"), getLikeValue(request.getSearch()))
             ));
+        }
+
+        if (request.getStatus() != null) {
+            predicates.add(criteriaBuilder.equal(root.get("status"), request.getStatus()));
         }
 
         if (request.getPrevisionnalStartingDate() != null) {
