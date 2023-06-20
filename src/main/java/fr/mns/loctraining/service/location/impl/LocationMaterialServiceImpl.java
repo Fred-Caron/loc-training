@@ -7,13 +7,13 @@ import fr.mns.loctraining.domain.model.material.Material;
 import fr.mns.loctraining.domain.repository.location.LocationMaterialRepository;
 import fr.mns.loctraining.domain.repository.location.LocationRepository;
 import fr.mns.loctraining.domain.repository.material.MaterialRepository;
+import fr.mns.loctraining.dto.material.material.MaterialDetails;
+import fr.mns.loctraining.dto.material.material.MaterialSearchRequest;
 import fr.mns.loctraining.service.location.LocationMaterialService;
 import fr.mns.loctraining.service.material.MaterialService;
 import fr.mns.loctraining.tools.exception.BadRequestException;
 import fr.mns.loctraining.tools.exception.NotFoundException;
 import fr.mns.loctraining.tools.utils.MappingUtils;
-import fr.mns.loctraining.vo.material.material.MaterialDetails;
-import fr.mns.loctraining.vo.material.material.MaterialSearchRequest;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 

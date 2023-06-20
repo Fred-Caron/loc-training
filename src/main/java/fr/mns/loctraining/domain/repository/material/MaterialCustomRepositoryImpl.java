@@ -1,7 +1,7 @@
 package fr.mns.loctraining.domain.repository.material;
 
 import fr.mns.loctraining.domain.model.material.Material;
-import fr.mns.loctraining.vo.material.material.MaterialSearchRequest;
+import fr.mns.loctraining.dto.material.material.MaterialSearchRequest;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import jakarta.persistence.criteria.CriteriaBuilder;

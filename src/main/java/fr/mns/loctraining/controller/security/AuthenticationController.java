@@ -1,7 +1,7 @@
 package fr.mns.loctraining.controller.security;
 
+import fr.mns.loctraining.dto.security.LoginRequest;
 import fr.mns.loctraining.service.security.AuthenticationService;
-import fr.mns.loctraining.vo.security.LoginRequest;
 import lombok.AllArgsConstructor;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.PostMapping;

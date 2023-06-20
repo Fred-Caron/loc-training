@@ -1,9 +1,9 @@
 package fr.mns.loctraining.service.location;
 
-import fr.mns.loctraining.vo.location.LocationCreateRequest;
-import fr.mns.loctraining.vo.location.LocationDetails;
-import fr.mns.loctraining.vo.location.LocationSearchRequest;
-import fr.mns.loctraining.vo.location.LocationUpdateRequest;
+import fr.mns.loctraining.dto.location.LocationCreateRequest;
+import fr.mns.loctraining.dto.location.LocationDetails;
+import fr.mns.loctraining.dto.location.LocationSearchRequest;
+import fr.mns.loctraining.dto.location.LocationUpdateRequest;
 
 import java.util.List;
 

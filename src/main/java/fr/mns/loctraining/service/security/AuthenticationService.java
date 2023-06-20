@@ -1,6 +1,6 @@
 package fr.mns.loctraining.service.security;
 
-import fr.mns.loctraining.vo.security.LoginRequest;
+import fr.mns.loctraining.dto.security.LoginRequest;
 
 public interface AuthenticationService {
 

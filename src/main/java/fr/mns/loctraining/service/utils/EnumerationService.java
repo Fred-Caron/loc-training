@@ -1,6 +1,6 @@
 package fr.mns.loctraining.service.utils;
 
-import fr.mns.loctraining.vo.utils.EnumerationDetails;
+import fr.mns.loctraining.dto.utils.EnumerationDetails;
 
 import java.util.List;
 

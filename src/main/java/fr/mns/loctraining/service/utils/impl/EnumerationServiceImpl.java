@@ -3,8 +3,8 @@ package fr.mns.loctraining.service.utils.impl;
 import fr.mns.loctraining.domain.model.location.LocationStatus;
 import fr.mns.loctraining.domain.model.user.UserAffiliation;
 import fr.mns.loctraining.domain.model.user.UserGender;
+import fr.mns.loctraining.dto.utils.EnumerationDetails;
 import fr.mns.loctraining.service.utils.EnumerationService;
-import fr.mns.loctraining.vo.utils.EnumerationDetails;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;

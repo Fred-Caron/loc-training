@@ -1,8 +1,8 @@
 package fr.mns.loctraining.service.material;
 
-import fr.mns.loctraining.vo.material.documentation.DocumentationCreateRequest;
-import fr.mns.loctraining.vo.material.documentation.DocumentationDetails;
-import fr.mns.loctraining.vo.material.documentation.DocumentationUpdateRequest;
+import fr.mns.loctraining.dto.material.documentation.DocumentationCreateRequest;
+import fr.mns.loctraining.dto.material.documentation.DocumentationDetails;
+import fr.mns.loctraining.dto.material.documentation.DocumentationUpdateRequest;
 
 import java.util.List;
 

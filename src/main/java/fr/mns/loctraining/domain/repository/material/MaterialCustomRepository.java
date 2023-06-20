@@ -1,7 +1,7 @@
 package fr.mns.loctraining.domain.repository.material;
 
 import fr.mns.loctraining.domain.model.material.Material;
-import fr.mns.loctraining.vo.material.material.MaterialSearchRequest;
+import fr.mns.loctraining.dto.material.material.MaterialSearchRequest;
 
 import java.util.List;
 

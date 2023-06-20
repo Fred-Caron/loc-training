@@ -1,18 +1,11 @@
 package fr.mns.loctraining.controller.material;
 
+import fr.mns.loctraining.dto.material.brand.BrandCreateRequest;
+import fr.mns.loctraining.dto.material.brand.BrandDetails;
+import fr.mns.loctraining.dto.material.brand.BrandUpdateRequest;
 import fr.mns.loctraining.service.material.BrandService;
-import fr.mns.loctraining.vo.material.brand.BrandCreateRequest;
-import fr.mns.loctraining.vo.material.brand.BrandDetails;
-import fr.mns.loctraining.vo.material.brand.BrandUpdateRequest;
 import lombok.AllArgsConstructor;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 

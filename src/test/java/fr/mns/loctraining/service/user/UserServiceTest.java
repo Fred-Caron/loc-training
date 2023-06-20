@@ -6,19 +6,17 @@ import fr.mns.loctraining.domain.model.user.UserAffiliation;
 import fr.mns.loctraining.domain.model.user.UserGender;
 import fr.mns.loctraining.domain.repository.user.StatusRepository;
 import fr.mns.loctraining.domain.repository.user.UserRepository;
+import fr.mns.loctraining.dto.user.status.StatusDetails;
+import fr.mns.loctraining.dto.user.user.UserDetails;
 import fr.mns.loctraining.tools.exception.NotFoundException;
 import fr.mns.loctraining.tools.utils.MappingUtils;
-import fr.mns.loctraining.vo.user.status.StatusDetails;
-import fr.mns.loctraining.vo.user.user.UserDetails;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.junit.jupiter.api.Assertions.fail;
+import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.when;
 
 @SpringBootTest

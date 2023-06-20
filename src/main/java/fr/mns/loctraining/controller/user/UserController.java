@@ -1,19 +1,12 @@
 package fr.mns.loctraining.controller.user;
 
+import fr.mns.loctraining.dto.user.user.UserCreateRequest;
+import fr.mns.loctraining.dto.user.user.UserDetails;
+import fr.mns.loctraining.dto.user.user.UserSearchRequest;
+import fr.mns.loctraining.dto.user.user.UserUpdateRequest;
 import fr.mns.loctraining.service.user.UserService;
-import fr.mns.loctraining.vo.user.user.UserCreateRequest;
-import fr.mns.loctraining.vo.user.user.UserDetails;
-import fr.mns.loctraining.vo.user.user.UserSearchRequest;
-import fr.mns.loctraining.vo.user.user.UserUpdateRequest;
 import lombok.AllArgsConstructor;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 

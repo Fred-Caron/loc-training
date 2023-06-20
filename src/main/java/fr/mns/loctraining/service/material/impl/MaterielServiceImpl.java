@@ -2,14 +2,14 @@ package fr.mns.loctraining.service.material.impl;
 
 import fr.mns.loctraining.domain.model.material.*;
 import fr.mns.loctraining.domain.repository.material.*;
+import fr.mns.loctraining.dto.material.material.MaterialCreateRequest;
+import fr.mns.loctraining.dto.material.material.MaterialDetails;
+import fr.mns.loctraining.dto.material.material.MaterialSearchRequest;
+import fr.mns.loctraining.dto.material.material.MaterialUpdateRequest;
 import fr.mns.loctraining.service.material.MaterialService;
 import fr.mns.loctraining.tools.exception.BadRequestException;
 import fr.mns.loctraining.tools.exception.NotFoundException;
 import fr.mns.loctraining.tools.utils.MappingUtils;
-import fr.mns.loctraining.vo.material.material.MaterialCreateRequest;
-import fr.mns.loctraining.vo.material.material.MaterialDetails;
-import fr.mns.loctraining.vo.material.material.MaterialSearchRequest;
-import fr.mns.loctraining.vo.material.material.MaterialUpdateRequest;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;

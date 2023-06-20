@@ -1,9 +1,9 @@
 package fr.mns.loctraining.controller.location;
 
+import fr.mns.loctraining.dto.material.material.MaterialDetails;
+import fr.mns.loctraining.dto.material.material.MaterialSearchRequest;
 import fr.mns.loctraining.service.location.LocationMaterialService;
 import fr.mns.loctraining.service.material.MaterialService;
-import fr.mns.loctraining.vo.material.material.MaterialDetails;
-import fr.mns.loctraining.vo.material.material.MaterialSearchRequest;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 

@@ -2,14 +2,13 @@ package fr.mns.loctraining.service.material.impl;
 
 import fr.mns.loctraining.domain.model.material.StorageArea;
 import fr.mns.loctraining.domain.repository.material.StorageAreaRepository;
-
+import fr.mns.loctraining.dto.material.storageArea.StorageAreaCreateRequest;
+import fr.mns.loctraining.dto.material.storageArea.StorageAreaDetails;
+import fr.mns.loctraining.dto.material.storageArea.StorageAreaUpdateRequest;
 import fr.mns.loctraining.service.material.StorageAreaService;
 import fr.mns.loctraining.tools.exception.BadRequestException;
 import fr.mns.loctraining.tools.exception.NotFoundException;
 import fr.mns.loctraining.tools.utils.MappingUtils;
-import fr.mns.loctraining.vo.material.storageArea.StorageAreaCreateRequest;
-import fr.mns.loctraining.vo.material.storageArea.StorageAreaDetails;
-import fr.mns.loctraining.vo.material.storageArea.StorageAreaUpdateRequest;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
@@ -25,7 +24,7 @@ public class StorageAreaServiceImpl implements StorageAreaService {
     @Override
     public StorageAreaDetails getDetails(Integer id) {
         StorageArea storageArea = storageAreaRepository.findByIdNullSafe(id);
-        if(storageArea == null){
+        if (storageArea == null) {
             throw new NotFoundException();
         }
         return MappingUtils.getStorageAreaDetails(storageArea);
@@ -44,22 +43,22 @@ public class StorageAreaServiceImpl implements StorageAreaService {
 
     @Override
     public StorageAreaDetails create(StorageAreaCreateRequest request) {
-        if(!StringUtils.hasText(request.getName())){
+        if (!StringUtils.hasText(request.getName())) {
             throw new BadRequestException("Name should not be empty");
         }
         StorageArea storageArea = new StorageArea();
         storageArea.setName(request.getName());
         storageArea = storageAreaRepository.save(storageArea);
-        return  MappingUtils.getStorageAreaDetails(storageArea);
+        return MappingUtils.getStorageAreaDetails(storageArea);
     }
 
     @Override
     public StorageAreaDetails update(Integer id, StorageAreaUpdateRequest request) {
         StorageArea storageArea = storageAreaRepository.findByIdNullSafe(id);
-        if(storageArea == null){
+        if (storageArea == null) {
             throw new NotFoundException();
         }
-        if(!StringUtils.hasText(request.getName())){
+        if (!StringUtils.hasText(request.getName())) {
             throw new BadRequestException("Name should not be empty");
         }
         storageArea.setName(request.getName());
@@ -70,7 +69,7 @@ public class StorageAreaServiceImpl implements StorageAreaService {
     @Override
     public void delete(Integer id) {
         StorageArea storageArea = storageAreaRepository.findByIdNullSafe(id);
-        if(storageArea == null){
+        if (storageArea == null) {
             throw new NotFoundException();
         }
         storageAreaRepository.delete(storageArea);

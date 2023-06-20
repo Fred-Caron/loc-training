@@ -1,7 +1,7 @@
 package fr.mns.loctraining.controller.utils;
 
+import fr.mns.loctraining.dto.utils.EnumerationDetails;
 import fr.mns.loctraining.service.utils.EnumerationService;
-import fr.mns.loctraining.vo.utils.EnumerationDetails;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;

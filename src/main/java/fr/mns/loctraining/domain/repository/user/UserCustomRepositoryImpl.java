@@ -1,7 +1,7 @@
 package fr.mns.loctraining.domain.repository.user;
 
 import fr.mns.loctraining.domain.model.user.User;
-import fr.mns.loctraining.vo.user.user.UserSearchRequest;
+import fr.mns.loctraining.dto.user.user.UserSearchRequest;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import jakarta.persistence.criteria.CriteriaBuilder;

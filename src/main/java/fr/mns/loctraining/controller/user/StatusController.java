@@ -1,18 +1,11 @@
 package fr.mns.loctraining.controller.user;
 
+import fr.mns.loctraining.dto.user.status.StatusCreateRequest;
+import fr.mns.loctraining.dto.user.status.StatusDetails;
+import fr.mns.loctraining.dto.user.status.StatusUpdateRequest;
 import fr.mns.loctraining.service.user.StatusService;
-import fr.mns.loctraining.vo.user.status.StatusCreateRequest;
-import fr.mns.loctraining.vo.user.status.StatusDetails;
-import fr.mns.loctraining.vo.user.status.StatusUpdateRequest;
 import lombok.AllArgsConstructor;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 

@@ -1,8 +1,8 @@
 package fr.mns.loctraining.service.user;
 
-import fr.mns.loctraining.vo.user.status.StatusCreateRequest;
-import fr.mns.loctraining.vo.user.status.StatusDetails;
-import fr.mns.loctraining.vo.user.status.StatusUpdateRequest;
+import fr.mns.loctraining.dto.user.status.StatusCreateRequest;
+import fr.mns.loctraining.dto.user.status.StatusDetails;
+import fr.mns.loctraining.dto.user.status.StatusUpdateRequest;
 
 import java.util.List;
 

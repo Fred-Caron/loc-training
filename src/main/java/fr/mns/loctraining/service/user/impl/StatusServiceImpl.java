@@ -2,13 +2,13 @@ package fr.mns.loctraining.service.user.impl;
 
 import fr.mns.loctraining.domain.model.user.Status;
 import fr.mns.loctraining.domain.repository.user.StatusRepository;
+import fr.mns.loctraining.dto.user.status.StatusCreateRequest;
+import fr.mns.loctraining.dto.user.status.StatusDetails;
+import fr.mns.loctraining.dto.user.status.StatusUpdateRequest;
 import fr.mns.loctraining.service.user.StatusService;
 import fr.mns.loctraining.tools.exception.BadRequestException;
 import fr.mns.loctraining.tools.exception.NotFoundException;
 import fr.mns.loctraining.tools.utils.MappingUtils;
-import fr.mns.loctraining.vo.user.status.StatusCreateRequest;
-import fr.mns.loctraining.vo.user.status.StatusDetails;
-import fr.mns.loctraining.vo.user.status.StatusUpdateRequest;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;

@@ -1,7 +1,7 @@
 package fr.mns.loctraining.service.location;
 
-import fr.mns.loctraining.vo.material.material.MaterialDetails;
-import fr.mns.loctraining.vo.material.material.MaterialSearchRequest;
+import fr.mns.loctraining.dto.material.material.MaterialDetails;
+import fr.mns.loctraining.dto.material.material.MaterialSearchRequest;
 
 import java.util.List;
 

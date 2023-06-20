@@ -1,8 +1,8 @@
 package fr.mns.loctraining.service.material;
 
-import fr.mns.loctraining.vo.material.model.ModelCreateRequest;
-import fr.mns.loctraining.vo.material.model.ModelDetails;
-import fr.mns.loctraining.vo.material.model.ModelUpdateRequest;
+import fr.mns.loctraining.dto.material.model.ModelCreateRequest;
+import fr.mns.loctraining.dto.material.model.ModelDetails;
+import fr.mns.loctraining.dto.material.model.ModelUpdateRequest;
 
 import java.util.List;
 

@@ -1,9 +1,9 @@
 package fr.mns.loctraining.service.user;
 
-import fr.mns.loctraining.vo.user.user.UserCreateRequest;
-import fr.mns.loctraining.vo.user.user.UserDetails;
-import fr.mns.loctraining.vo.user.user.UserSearchRequest;
-import fr.mns.loctraining.vo.user.user.UserUpdateRequest;
+import fr.mns.loctraining.dto.user.user.UserCreateRequest;
+import fr.mns.loctraining.dto.user.user.UserDetails;
+import fr.mns.loctraining.dto.user.user.UserSearchRequest;
+import fr.mns.loctraining.dto.user.user.UserUpdateRequest;
 
 import java.util.List;
 

@@ -1,8 +1,8 @@
 package fr.mns.loctraining.service.material;
 
-import fr.mns.loctraining.vo.material.state.StateCreateRequest;
-import fr.mns.loctraining.vo.material.state.StateDetails;
-import fr.mns.loctraining.vo.material.state.StateUpdateRequest;
+import fr.mns.loctraining.dto.material.state.StateCreateRequest;
+import fr.mns.loctraining.dto.material.state.StateDetails;
+import fr.mns.loctraining.dto.material.state.StateUpdateRequest;
 
 import java.util.List;
 
