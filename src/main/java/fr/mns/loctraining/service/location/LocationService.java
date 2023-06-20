@@ -26,4 +26,6 @@ public interface LocationService {
     LocationDetails adminRejection(Integer id);
 
     List<LocationDetails> search(LocationSearchRequest request);
+
+    List<LocationDetails> searchToBeValidated(LocationSearchRequest request);
 }

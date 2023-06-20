@@ -155,4 +155,10 @@ public class LocationServiceImpl implements LocationService {
         }
         return locationDetailsList;
     }
+
+    @Override
+    public List<LocationDetails> searchToBeValidated(LocationSearchRequest request) {
+        request.setStatus(LocationStatus.PENDING);
+        return search(request);
+    }
 }
